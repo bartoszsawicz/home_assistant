@@ -1,0 +1,49 @@
+binary_sensor.living_room_sensor_node_2_99:
+  friendly_name: Living Room Heartbeat
+  hidden: true
+sensor.living_room_sensor_node_2_0:
+  friendly_name: Living Room Humidity
+  hidden: true
+sensor.living_room_sensor_node_2_1:
+  friendly_name: Living Room Temperature
+binary_sensor.living_room_sensor_node_2_3:
+  friendly_name: Living Room Kitchen Window
+binary_sensor.living_room_sensor_node_2_2:
+  friendly_name: Living Room Terrace Window
+binary_sensor.living_room_sensor_node_2_4:
+  friendly_name: Living Room Garden Window
+binary_sensor.bedroom_2_sensor_node_3_2:
+  friendly_name: Kids Bedroom  Window
+sensor.bedroom_2_sensor_node_3_0:
+  friendly_name: Kids Bedroom Humidity
+  hidden: 'true'
+sensor.bedroom_2_sensor_node_3_1:
+  friendly_name: Kids Bedroom Temperature
+group.all_automations:
+  hidden: false
+group.all_devices:
+  hidden: false
+group.all_switches:
+  hidden: false
+sun.sun:
+  hidden: true
+sensor.yr_cloudiness:
+  friendly_name: Cloudiness
+sensor.yr_humidity:
+  friendly_name: Humidity
+  hidden: true
+sensor.yr_symbol:
+  friendly_name: Symbol
+sensor.yr_temperature:
+  friendly_name: Temperature
+sensor.yr_wind_speed:
+  friendly_name: Wind speed
+switch.sprinkler_1_1:
+  friendly_name: Northern Sprinkler
+switch.sprinkler_1_2:
+  friendly_name: Western Sprinkler
+binary_sensor.bedroom_sensor_node_4_99:
+  friendly_name: Bedroom Heartbeat
+  hidden: true
+binary_sensor.bedroom_sensor_node_4_2:
+  friendly_name: Bedroom Window

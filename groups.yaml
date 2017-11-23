@@ -1,0 +1,74 @@
+default_view:
+  view: true
+  entities:
+    - group.yr_weather
+    - group.living_room
+    - group.kids_bedroom
+    - group.bedroom
+    - group.garden
+users:
+  view: yes
+  entities:
+    - group.twigg
+    - group.gburek
+    - group.matixy
+automations:
+  view: yes
+  entities:
+    - group.all_automations
+    - group.all_devices
+    - group.all_switches
+security:
+  view: yes
+  entities:
+    - group.windows
+twigg: 
+  entities:
+    - device_tracker.twigg_owntracks
+    - device_tracker.twigg_nmap
+gburek: 
+  entities:
+    - device_tracker.gburek_nmap
+    - device_tracker.gburek_owntracks
+matixy: 
+  entities:
+    - device_tracker.matixy_nmap
+yr_weather:
+  name: Yr
+  entities:
+    - sensor.yr_symbol
+    - sensor.yr_temperature
+    - sensor.yr_wind_speed
+    - sensor.yr_cloudiness
+    - sensor.yr_humidity
+living_room:
+  name: Living room
+  entities:
+    - sensor.living_room_sensor_node_2_0
+    - sensor.living_room_sensor_node_2_1
+    - binary_sensor.living_room_sensor_node_2_2
+    - binary_sensor.living_room_sensor_node_2_3
+    - binary_sensor.living_room_sensor_node_2_4
+kids_bedroom:
+  name: Kids bedroom
+  entities:
+    - binary_sensor.bedroom_2_sensor_node_3_2
+    - sensor.bedroom_2_sensor_node_3_0
+    - sensor.bedroom_2_sensor_node_3_1
+bedroom:
+  name: Bedroom
+  entities:
+    - binary_sensor.bedroom_sensor_node_4_2
+garden:
+  name: Garden
+  entities:
+    - switch.sprinkler_1_1
+    - switch.sprinkler_1_2
+windows:
+  name: Windows
+  entities:
+    - binary_sensor.bedroom_2_sensor_node_3_2
+    - binary_sensor.living_room_sensor_node_2_2
+    - binary_sensor.living_room_sensor_node_2_3
+    - binary_sensor.living_room_sensor_node_2_4
+    - binary_sensor.bedroom_sensor_node_4_2

@@ -1,0 +1,134 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Warsaw
+
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Prediction
+sensor:
+  - platform: yr
+    monitored_conditions:
+      - temperature
+      - symbol
+      - humidity
+      - windSpeed
+      - cloudiness
+  - platform: time_date
+    display_options:
+      - 'date_time'
+  - platform: template
+    sensors:
+      bedroom_2_controller_dead:
+        value_template: "{{ as_timestamp(now()) - as_timestamp(states.binary_sensor.bedroom_2_sensor_node_3_99.last_updated) | int > 3600 }}"
+        friendly_name: 'Kids bedroom controller not reporting for 1 hour'
+        entity_id:
+          - sensor.date__time
+      bedroom_controller_dead:
+        value_template: "{{ (as_timestamp(now())-as_timestamp(states.binary_sensor.bedroom_sensor_node_4_99.last_updated)) | int > 3600 }}"
+        friendly_name: 'Bedroom controller not reporting for 1 hour'
+        entity_id: 
+          - sensor.date__time     
+      living_room_controller_dead:
+        friendly_name: 'Living room controller not reporting for 1 hour'
+        value_template: "{{ (as_timestamp(now())-as_timestamp(states.binary_sensor.living_room_sensor_node_2_99.last_updated)) | int > 3600 }}"
+        entity_id:
+          - sensor.date__time
+
+
+# Text to speech
+tts:
+  platform: google
+
+group: !include groups.yaml
+automation: !include automations.yaml
+alert: !include alerts.yaml
+alarm_control_panel: !include alarm.yaml
+panel_custom: !include panel_custom.yaml
+
+mysensors:
+  gateways:
+    - device: '/dev/ttyUSB0'
+  version: 2.0  
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 192.168.0.10-103
+    track_new_devices: false
+  - platform: owntracks
+    track_new_devices: true
+    waypoints: true
+    waypoints_whitelist:
+      - twigg
+
+mqtt:
+  broker: 127.0.0.1
+  port: 8125
+  keepalive: 60
+  client_id: home-assistant
+  username: homeassistant
+  password: !secret mqtt_password
+
+notify:
+  - name: ha_discord
+    platform: discord
+    token: !secret discord_token
+  - name: discord_alert
+    platform: group
+    services:
+      - service: ha_discord
+        data:
+          target:
+            - !secret discord_alerts_channel_id
+  - name: discord_notify
+    platform: group
+    services:
+      - service: ha_discord
+        data:
+          target:
+            - !secret discord_notifications_channel_id
