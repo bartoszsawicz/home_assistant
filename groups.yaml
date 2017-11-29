@@ -33,6 +33,7 @@ gburek:
 matixy: 
   entities:
     - device_tracker.matixy_nmap
+    - device_tracker.matixy_owntracks
 yr_weather:
   name: Yr
   entities:

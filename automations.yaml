@@ -118,3 +118,20 @@
     to: 'home'
   action:
     - service: alarm_control_panel.alarm_disarm
+
+- id: alarm_armed_enable_motion_detection
+  alias: '[Alarm] Away Mode Armed - Enable Camera Motion Detection'
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.house
+    to: 'armed_away'
+  action:
+    - service: shell_command.start_motion_detection
+- id: alarm_disarmed_disable_motion_detection
+  alias: '[Alarm] Disarmed - Disable Camera Motion Detection'
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.house
+    to: 'disarmed'
+  action:
+    - service: shell_command.stop_motion_detection

@@ -28,14 +28,13 @@ immediate:
   - binary_sensor.living_room_sensor_node_2_4
 
 # Sensors in this group start the clock (pending_time) when tripped before the alarm is activated in 'Away' mode
-#delayed:
-#  - binary_sensor.garage_door_sensor
+delayed:
+  - binary_sensor.camera_motion_detection
 
 # Same as notathome but hopefully the title is more self explanatory. Can still use notathome for backwards compatibility
 # Note sensors can exist in more than one group notice top_floor appears in two groups
-#homemodeignore:
-#  - binary_sensor.top_floor_multi_sensor_sensor
-#  - binary_sensor.lounge_multi_sensor_sensor
+homemodeignore:
+  - binary_sensor.camera_motion_detection
 
 # Use this group to automatically override the warning message on open sensors when setting 'away' mode. (I use this as I have a motion sensor at the front door)
 #override:

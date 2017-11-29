@@ -79,7 +79,12 @@ sensor:
         value_template: "{{ (as_timestamp(now())-as_timestamp(states.binary_sensor.living_room_sensor_node_2_99.last_updated)) | int > 3600 }}"
         entity_id:
           - sensor.date__time
-
+binary_sensor:
+  - platform: command_line
+    name: Living room camera motion detection 
+    command: /home/homeassistant/scripts/any_files_modified_last_minutes.sh 1
+    scan_interval: 5
+    device_class: motion
 
 # Text to speech
 tts:
@@ -132,3 +137,9 @@ notify:
         data:
           target:
             - !secret discord_notifications_channel_id
+
+logger:
+  default: warn
+shell_command:
+  start_motion_detection: /home/homeassistant/scripts/start_camera_detection.sh
+  stop_motion_detection: /home/homeassistant/scripts/stop_camera_detection.sh
