@@ -81,5 +81,4 @@ tv:
     - script.tv_pc_source
     - script.tv_volume_up
     - script.tv_volume_down
-    - script.tv_turn_on_cable
-    - script.tv_and_cable_off
+    - script.tv_off
