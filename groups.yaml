@@ -1,6 +1,7 @@
 default_view:
   view: true
   entities:
+    - group.tv
     - group.yr_weather
     - group.living_room
     - group.kids_bedroom
@@ -73,3 +74,12 @@ windows:
     - binary_sensor.living_room_sensor_node_2_3
     - binary_sensor.living_room_sensor_node_2_4
     - binary_sensor.bedroom_sensor_node_4_2
+tv:
+  name: TV
+  entities:
+    - script.tv_onoff
+    - script.tv_pc_source
+    - script.tv_volume_up
+    - script.tv_volume_down
+    - script.tv_turn_on_cable
+    - script.tv_and_cable_off

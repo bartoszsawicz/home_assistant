@@ -143,3 +143,12 @@ logger:
 shell_command:
   start_motion_detection: /home/homeassistant/scripts/start_camera_detection.sh
   stop_motion_detection: /home/homeassistant/scripts/stop_camera_detection.sh
+
+switch:
+  - platform: broadlink
+    host: 192.168.0.110
+    mac: 'B8:27:EB:95:35:1E'
+    friendly_name: 'Broadlink IR controller'
+    type: rm_mini
+    
+script: !include scripts.yaml
