@@ -114,10 +114,12 @@
   trigger:
     platform: state
     entity_id: group.users
-    from: 'not_home'
     to: 'home'
   action:
     - service: alarm_control_panel.alarm_disarm
+      data:
+        entity_id: alarm_control_panel.house
+        code: !secret alarm_code
 
 - id: alarm_armed_enable_motion_detection
   alias: '[Alarm] Away Mode Armed - Enable Camera Motion Detection'
