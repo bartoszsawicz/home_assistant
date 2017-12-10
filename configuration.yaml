@@ -103,10 +103,10 @@ mysensors:
 
 device_tracker:
   - platform: nmap_tracker
-    hosts: 192.168.0.10-103
+    hosts: 192.168.0.100-105
     track_new_devices: false
   - platform: owntracks
-    track_new_devices: true
+    track_new_devices: false
     waypoints: true
     waypoints_whitelist:
       - twigg
@@ -140,6 +140,8 @@ notify:
 
 logger:
   default: warn
+  logs:
+    custom_components.alarm_control_panel.bwalarm: info
 shell_command:
   start_motion_detection: /home/homeassistant/scripts/start_camera_detection.sh
   stop_motion_detection: /home/homeassistant/scripts/stop_camera_detection.sh

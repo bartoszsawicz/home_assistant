@@ -23,18 +23,19 @@ security:
   view: yes
   entities:
     - group.windows
+    - binary_sensor.camera_motion_detection
 twigg: 
   entities:
-    - device_tracker.twigg_owntracks
+#    - device_tracker.twigg_owntracks
     - device_tracker.twigg_nmap
 gburek: 
   entities:
     - device_tracker.gburek_nmap
-    - device_tracker.gburek_owntracks
+#    - device_tracker.gburek_owntracks
 matixy: 
   entities:
     - device_tracker.matixy_nmap
-    - device_tracker.matixy_owntracks
+#    - device_tracker.matixy_owntracks
 yr_weather:
   name: Yr
   entities:
@@ -57,6 +58,7 @@ kids_bedroom:
     - binary_sensor.bedroom_2_sensor_node_3_2
     - sensor.bedroom_2_sensor_node_3_0
     - sensor.bedroom_2_sensor_node_3_1
+    - switch.living_room_sensor_node_2_5
 bedroom:
   name: Bedroom
   entities:
@@ -66,6 +68,8 @@ garden:
   entities:
     - switch.sprinkler_1_1
     - switch.sprinkler_1_2
+    - switch.living_room_sensor_node_2_7
+    - switch.living_room_sensor_node_2_8
 windows:
   name: Windows
   entities:
