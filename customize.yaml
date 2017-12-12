@@ -47,11 +47,19 @@ binary_sensor.bedroom_sensor_node_4_99:
   hidden: true
 binary_sensor.bedroom_sensor_node_4_2:
   friendly_name: Bedroom window
-switch.living_room_sensor_node_2_5:
+switch.gateway_0_5:
   friendly_name: Kids bedroom ceiling light
-switch.living_room_sensor_node_2_6:
+switch.gateway_0_6:
   friendly_name: Terrace garden power socket
-switch.living_room_sensor_node_2_7:
+switch.gateway_0_7:
   friendly_name: Terrace garden light
-switch.living_room_sensor_node_2_8:
+switch.gateway_0_8:
   friendly_name: Bedroom garden light
+switch.gateway_0_9:
+  friendly_name: Alarm siren
+switch.gateway_0_10:
+  friendly_name: Christmas tree lights 1
+switch.gateway_0_11:
+  friendly_name: Christmas tree lights 2
+switch.gateway_0_12:
+  friendly_name: Christmas tree lights 3

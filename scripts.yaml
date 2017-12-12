@@ -82,3 +82,116 @@ tv_pc_source:
         packet:
           # Enter
           - "JgDSAJOTEjcTNxI4EhMSExITEhMTEhM3FTUSOBITEhMSExITEhMSExQRExMSNxITEzcSOBITEjgSOBI3EhMTNxITEhMTNxIABfOTkhI4EjgSOBITEhMSExITEhMSOBI4EjcTExITEhMSExITEhMSExITEjgSExI4EjgSExI4EjcSOBITEjgSExITEjgSAAXzkpMSOBI4EjcTEhMTEhMSExITEjgSNxM3EhMSExMSExMSExITEhMSExI4EhMSOBI3ExMSNxI4EjgUERI4EhMSExI4EgANBQAAAAAAAA=="   
+turn_on_terrace_lights:
+  alias: Turn on terrace lights
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_7
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_7
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_8
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_8
+    - delay: 00:00:02
+turn_off_terrace_lights:
+  alias: Turn off terrace lights
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_7
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_7
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_7
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_8
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_8
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_8
+    - delay: 00:00:02
+turn_off_christmas_tree:
+  alias: Turn off christmas tree
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_10
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_10
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_10
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_11
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_11
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_11
+    - delay: 00:00:02
+                     
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_12
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_12
+    - delay: 00:00:02
+    - service: switch.turn_off
+      data:
+        entity_id: switch.gateway_0_12
+    - delay: 00:00:02
+turn_on_christmas_tree:
+  alias: 'Turn on christmas tree'
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_10
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_10
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_11
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_11
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_12
+    - delay: 00:00:02
+    - service: switch.turn_on
+      data:
+        entity_id: switch.gateway_0_12
+    - delay: 00:00:02

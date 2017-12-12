@@ -7,6 +7,7 @@ default_view:
     - group.kids_bedroom
     - group.bedroom
     - group.garden
+    - group.useful_scripts
 users:
   view: yes
   entities:
@@ -23,10 +24,10 @@ security:
   view: yes
   entities:
     - group.windows
-    - binary_sensor.camera_motion_detection
+    - binary_sensor.living_room_camera_motion_detection
 twigg: 
   entities:
-#    - device_tracker.twigg_owntracks
+    - device_tracker.twigg_owntracks
     - device_tracker.twigg_nmap
 gburek: 
   entities:
@@ -52,13 +53,17 @@ living_room:
     - binary_sensor.living_room_sensor_node_2_2
     - binary_sensor.living_room_sensor_node_2_3
     - binary_sensor.living_room_sensor_node_2_4
+    - binary_sensor.living_room_camera_motion_detection
+    - switch.gateway_0_10
+    - switch.gateway_0_11
+    - switch.gateway_0_12
 kids_bedroom:
   name: Kids bedroom
   entities:
     - binary_sensor.bedroom_2_sensor_node_3_2
     - sensor.bedroom_2_sensor_node_3_0
     - sensor.bedroom_2_sensor_node_3_1
-    - switch.living_room_sensor_node_2_5
+    - switch.gateway_0_5
 bedroom:
   name: Bedroom
   entities:
@@ -68,8 +73,8 @@ garden:
   entities:
     - switch.sprinkler_1_1
     - switch.sprinkler_1_2
-    - switch.living_room_sensor_node_2_7
-    - switch.living_room_sensor_node_2_8
+    - switch.gateway_0_7
+    - switch.gateway_0_8
 windows:
   name: Windows
   entities:
@@ -86,3 +91,10 @@ tv:
     - script.tv_volume_up
     - script.tv_volume_down
     - script.tv_off
+useful_scripts:
+  name: Scripts
+  entities:
+    - script.turn_on_christmas_tree
+    - script.turn_off_christmas_tree
+    - script.turn_on_terrace_lights
+    - script.turn_off_terrace_lights

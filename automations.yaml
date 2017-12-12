@@ -171,31 +171,76 @@
   action:
     - service: switch.toggle
       data:
-        entity_id: switch.living_room_sensor_node_2_7 
+        entity_id: switch.gateway_0_7 
     - service: switch.toggle
       data:
-        entity_id: switch.living_room_sensor_node_2_8
+        entity_id: switch.gateway_0_8
 
 - id: cleanup_after_triggered_alarm_timeouts
-  alias: 'Garden lights on after triggered alarm timeouts
+  alias: 'Garden lights on after triggered alarm timeouts'
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    from 'triggered'
-    to: 'armed_away'
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: 'triggered'
+      to: 'armed_away'
   action:
-  - service: switch.turn_on
-    entity_id: switch.living_room_sensor_node_2_7
-  - service: switch.turn_on
-    entity_id: switch.living_room_sensor_node_2_8
+    - service: switch.turn_on
+      entity_id: switch.gateway_0_7
+    - service: switch.turn_on
+      entity_id: switch.gateway_0_8
 - id: cleanup_after_triggered_alarm_deactivated
+  alias: 'Cleanup after alarm deactivated'
   trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    from 'triggered'
-    to: 'disarmed'
+    - platform: state
+      entity_id: alarm_control_panel.house
+      from: 'triggered'
+      to: 'disarmed'
   action:
-  - service: switch.turn_off
-    entity_id: switch.living_room_sensor_node_2_7
-  - service: switch.turn_off
-    entity_id: switch.living_room_sensor_node_2_8
+    - service: switch.turn_off
+      entity_id: switch.gateway_0_7
+    - service: switch.turn_off
+      entity_id: switch.gateway_0_8
+- id: light_up_terrace_when_dark
+  alias: 'Lit terrace up when dark'
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "+01:00:00"
+  action:
+    - service: script.turn_on_terrace_lights
+- id: turn_off_everything_at_night
+  alias: 'Turn lights off at night'
+  trigger:
+    - platform: time
+      at: '00:00:00'
+  action:
+    - service: script.turn_off_terrace_lights
+    - service: script.turn_off_christmas_tree
+- id: turn_on_christmas_tree_in_the_morning
+  trigger:
+    - platform: time
+      at: '06:00:00'
+  condition:
+    - condition: state
+      entity_id: group.users
+      state: 'home'
+  action:
+    - service: script.turn_on_chsristmas_tree
+- id: turn_off_christmas_tree_when_everyone_leaves_house
+  alias: 'Turn off christmas tree when noone home'
+  trigger:
+    - platform: state
+      entity_id: group.users
+      to: 'not_home'
+  action:
+    - service: script.turn_off_christmas_tree
+- id: turn_on_christmas_tree_when_someone_comes_home
+  alias: 'Turn on christmas tree when someone comes home'
+  trigger:
+    - platform: state
+      entity_id: group.users
+      to: 'home'
+      for: 
+        minutes: 1
+  action:
+    - service: script.turn_on_christmas_tree

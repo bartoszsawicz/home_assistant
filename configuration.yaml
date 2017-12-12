@@ -79,6 +79,7 @@ sensor:
         value_template: "{{ (as_timestamp(now())-as_timestamp(states.binary_sensor.living_room_sensor_node_2_99.last_updated)) | int > 3600 }}"
         entity_id:
           - sensor.date__time
+
 binary_sensor:
   - platform: command_line
     name: Living room camera motion detection 
