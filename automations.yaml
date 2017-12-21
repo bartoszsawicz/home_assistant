@@ -1,13 +1,15 @@
 - id: turn_on_sprinkler1
   alias: Turn on 1st sprinkler
+  initial_state: 'off'
   trigger:
     platform: time
-    at: '01:00:00'
+    at: 01:00:00
   action:
     service: homeassistant.turn_on
     entity_id: switch.sprinkler_1_1
 - id: turn_off_sprinkler1
   alias: Turn off 1st sprinkler after 5 minutes
+  initial_state: 'off'
   trigger:
     platform: state
     entity_id: switch.sprinkler_1_1
@@ -18,93 +20,84 @@
   action:
     service: homeassistant.turn_off
     entity_id: switch.sprinkler_1_1
-
-
 - id: alarm_armed_away
   alias: '[Alarm] Away Mode Armed'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'armed_away'
+    to: armed_away
   action:
   - data:
-      message: 'The house alarm has been switched on in away mode. Goodbye'
+      message: The house alarm has been switched on in away mode. Goodbye
     service: notify.discord_notify
-
 - id: alarm_armed_home
   alias: '[Alarm] Home Mode Armed'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'armed_home'
+    to: armed_home
   action:
   - data:
-      message: 'The house alarm has been switched on in home mode. Goodnight'
+      message: The house alarm has been switched on in home mode. Goodnight
     service: notify.discord_notify
-
 - id: alarm_arming_away
   alias: '[Alarm] Away Mode Arming'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'pending'
+    to: pending
   action:
   - data:
-      message: 'House alarm activating, ensure all doors and windows are closed'
+      message: House alarm activating, ensure all doors and windows are closed
     service: notify.discord_notify
-
 - id: alarm_disarmed
   alias: '[Alarm] Disarmed'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'disarmed'
+    to: disarmed
   action:
-#  - service: switch.turn_off
-#    entity_id: switch.siren_switch
   - data:
-      message: 'The house alarm has been Deactivated'
+      message: The house alarm has been Deactivated
     service: notify.discord_notify
-
 - id: alarm_triggered
   alias: '[Alarm] Triggered'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'triggered'
+    to: triggered
   action:
-#  - service: switch.turn_on
-#    entity_id: switch.siren_switch
   - service: notify.discord_alert
     data:
-      message: 'ALARM TRIGGERED!!! {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][ states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name }}'
-
+      message: ALARM TRIGGERED!!! {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][
+        states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name
+        }}
 - id: alarm_warning
   alias: '[Alarm] Warning'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'warning'
+    to: warning
   action:
   - service: notify.discord_alert
     data:
-      message: 'ALARM Warning {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][ states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name }}'
-
+      message: ALARM Warning {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][
+        states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name
+        }}
 - id: arm_alarm_when_all_users_left_home
   alias: '[Alarm] Auto arm'
-  condition: 
+  condition:
     condition: state
     entity_id: alarm_control_panel.house
-    state: 'disarmed'
+    state: disarmed
   trigger:
     platform: state
     entity_id: group.users
-    to: 'not_home'
-    for: 
+    to: not_home
+    for:
       minutes: 15
   action:
-    - service: alarm_control_panel.alarm_arm_away
-
+  - service: alarm_control_panel.alarm_arm_away
 - id: disarm_alarm_when_user_comes_home
   alias: '[Alarm] Auto disarm'
   condition:
@@ -114,32 +107,32 @@
   trigger:
     platform: state
     entity_id: group.users
-    to: 'home'
+    to: home
   action:
-    - service: alarm_control_panel.alarm_disarm
-      data:
-        entity_id: alarm_control_panel.house
-        code: !secret alarm_code
-
+  - service: alarm_control_panel.alarm_disarm
+    data:
+      entity_id: alarm_control_panel.house
+      code: 5464
 - id: alarm_armed_enable_motion_detection
   alias: '[Alarm] Away Mode Armed - Enable Camera Motion Detection'
+  initial_state: 'off'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'armed_away'
+    to: armed_away
   action:
-    - service: shell_command.start_motion_detection
+  - service: shell_command.start_motion_detection
 - id: alarm_disarmed_disable_motion_detection
   alias: '[Alarm] Disarmed - Disable Camera Motion Detection'
+  initial_state: 'off'
   trigger:
   - platform: state
     entity_id: alarm_control_panel.house
-    to: 'disarmed'
+    to: disarmed
   action:
-    - service: shell_command.stop_motion_detection
-
+  - service: shell_command.stop_motion_detection
 - id: alert_when_cold_and_window_open_for_too_long
-  alias: 'Alert when window open for long time'
+  alias: Alert when window open for long time
   condition:
     condition: numeric_state
     entity_id: sensor.yr_temperature
@@ -147,100 +140,107 @@
   trigger:
     platform: state
     entity_id:
-      - binary_sensor.living_room_sensor_node_2_2
-      - binary_sensor.living_room_sensor_node_2_3
-      - binary_sensor.living_room_sensor_node_2_4
-      - binary_sensor.bedroom_2_sensor_node_3_2
-      - binary_sensor.bedroom_sensor_node_4_2
+    - binary_sensor.living_room_sensor_node_2_2
+    - binary_sensor.living_room_sensor_node_2_3
+    - binary_sensor.living_room_sensor_node_2_4
+    - binary_sensor.bedroom_2_sensor_node_3_2
+    - binary_sensor.bedroom_sensor_node_4_2
     to: 'on'
     for:
       minutes: 20
   action:
   - service: notify.discord_alert
-    data:
+    data_template:
       message: '{{ trigger.to_state.attributes.friendly_name }} is opened too long'
 - id: blink_garden1_light_when_alarm_triggered
-  alias: 'Blink Garden Terrace Light When Alarm Triggered'
+  alias: Blink Garden Terrace Light When Alarm Triggered
   condition:
     condition: state
     entity_id: alarm_control_panel.house
-    state: 'triggered'
+    state: triggered
   trigger:
     platform: time
-    seconds: '/2'
+    seconds: /2
   action:
-    - service: switch.toggle
-      data:
-        entity_id: switch.gateway_0_7 
-    - service: switch.toggle
-      data:
-        entity_id: switch.gateway_0_8
-
+  - service: switch.toggle
+    data:
+      entity_id: switch.gateway_0_7
+  - service: switch.toggle
+    data:
+      entity_id: switch.gateway_0_8
 - id: cleanup_after_triggered_alarm_timeouts
-  alias: 'Garden lights on after triggered alarm timeouts'
+  alias: Garden lights on after triggered alarm timeouts
   trigger:
-    - platform: state
-      entity_id: alarm_control_panel.house
-      from: 'triggered'
-      to: 'armed_away'
+  - platform: state
+    entity_id: alarm_control_panel.house
+    from: triggered
+    to: armed_away
   action:
-    - service: switch.turn_on
-      entity_id: switch.gateway_0_7
-    - service: switch.turn_on
-      entity_id: switch.gateway_0_8
+  - service: switch.turn_on
+    entity_id: switch.gateway_0_7
+  - service: switch.turn_on
+    entity_id: switch.gateway_0_8
 - id: cleanup_after_triggered_alarm_deactivated
-  alias: 'Cleanup after alarm deactivated'
+  alias: Cleanup after alarm deactivated
   trigger:
-    - platform: state
-      entity_id: alarm_control_panel.house
-      from: 'triggered'
-      to: 'disarmed'
+  - platform: state
+    entity_id: alarm_control_panel.house
+    from: triggered
+    to: disarmed
   action:
-    - service: switch.turn_off
-      entity_id: switch.gateway_0_7
-    - service: switch.turn_off
-      entity_id: switch.gateway_0_8
+  - service: switch.turn_off
+    entity_id: switch.gateway_0_7
+  - service: switch.turn_off
+    entity_id: switch.gateway_0_8
 - id: light_up_terrace_when_dark
-  alias: 'Lit terrace up when dark'
+  alias: Lit terrace up when dark
   trigger:
-    - platform: sun
-      event: sunset
-      offset: "+01:00:00"
+  - platform: sun
+    event: sunset
+    offset: '+01:00:00'
   action:
-    - service: script.turn_on_terrace_lights
+  - service: script.turn_on_terrace_lights
 - id: turn_off_everything_at_night
-  alias: 'Turn lights off at night'
+  alias: Make sure everything is turned off at night
   trigger:
-    - platform: time
-      at: '00:00:00'
+    platform: time
+    at: '22:30:00'
   action:
-    - service: script.turn_off_terrace_lights
-    - service: script.turn_off_christmas_tree
+  - service: script.turn_off_terrace_lights
+  - service: script.turn_off_christmas_tree
+- id: turn_off_garden_lights_in_late_evening
+  alias: Turn off garden lights late evening
+  trigger:
+    platform: time
+    at: '21:30:00'
+  action:
+  - service: script.turn_off_terrace_lights
 - id: turn_on_christmas_tree_in_the_morning
   trigger:
-    - platform: time
-      at: '06:00:00'
+    platform: time
+    at: '06:00:00'
   condition:
-    - condition: state
-      entity_id: group.users
-      state: 'home'
+    condition: state
+    entity_id: group.users
+    state: 'home'
   action:
-    - service: script.turn_on_chsristmas_tree
+  - service: script.turn_on_christmas_tree
+  alias: Turn on christmas tree in the morning
 - id: turn_off_christmas_tree_when_everyone_leaves_house
-  alias: 'Turn off christmas tree when noone home'
+  alias: Turn off christmas tree when noone home
   trigger:
-    - platform: state
-      entity_id: group.users
-      to: 'not_home'
+  - platform: state
+    entity_id: group.users
+    to: not_home
   action:
-    - service: script.turn_off_christmas_tree
+  - service: script.turn_off_christmas_tree
 - id: turn_on_christmas_tree_when_someone_comes_home
-  alias: 'Turn on christmas tree when someone comes home'
+  alias: Turn on christmas tree when someone comes home
   trigger:
-    - platform: state
-      entity_id: group.users
-      to: 'home'
-      for: 
-        minutes: 1
+  - platform: state
+    entity_id: group.users
+    to: 'home'
+    for:
+      minutes: 1
   action:
-    - service: script.turn_on_christmas_tree
+  - service: script.turn_on_christmas_tree

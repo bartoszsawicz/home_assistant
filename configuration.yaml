@@ -27,12 +27,14 @@ http:
   api_password: !secret http_password
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
-
+  server_port: 8080
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+  ip_ban_enabled: True
+  login_attempts_threshold: 100
 updater:
 
 # Discover some devices automatically

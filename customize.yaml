@@ -14,6 +14,9 @@ binary_sensor.living_room_sensor_node_2_4:
   friendly_name: Living room garden window
 binary_sensor.bedroom_2_sensor_node_3_2:
   friendly_name: Kids bedroom window
+binary_sensor.bedroom_2_sensor_node_3_99:
+  friendly_name: Kids bedroom heartbeat
+  hidden: true
 sensor.bedroom_2_sensor_node_3_0:
   friendly_name: Kids bedroom humidity
   hidden: 'true'
@@ -63,3 +66,4 @@ switch.gateway_0_11:
   friendly_name: Christmas tree lights 2
 switch.gateway_0_12:
   friendly_name: Christmas tree lights 3
+alert.noheartbeat_bedroom_2: {}
