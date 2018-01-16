@@ -198,6 +198,9 @@
   - platform: sun
     event: sunset
     offset: '+01:00:00'
+  condition:
+    condition: template
+    value_template: "{{ not is_state('group.users', 'home') }}"
   action:
   - service: script.turn_on_terrace_lights
 - id: turn_off_everything_at_night
