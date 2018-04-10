@@ -60,10 +60,6 @@ switch.gateway_0_8:
   friendly_name: Bedroom garden light
 switch.gateway_0_9:
   friendly_name: Alarm siren
-switch.gateway_0_10:
-  friendly_name: Christmas tree lights 1
-switch.gateway_0_11:
-  friendly_name: Christmas tree lights 2
-switch.gateway_0_12:
-  friendly_name: Christmas tree lights 3
 alert.noheartbeat_bedroom_2: {}
+climate.living_room1:
+  friendly_name: Living room large radiator

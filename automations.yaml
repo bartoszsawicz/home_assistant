@@ -95,7 +95,7 @@
     entity_id: group.users
     to: not_home
     for:
-      minutes: 15
+      minutes: 20
   action:
   - service: alarm_control_panel.alarm_arm_away
 - id: disarm_alarm_when_user_comes_home
@@ -176,10 +176,7 @@
     from: triggered
     to: armed_away
   action:
-  - service: switch.turn_on
-    entity_id: switch.gateway_0_7
-  - service: switch.turn_on
-    entity_id: switch.gateway_0_8
+  - service: script.turn_on_terrace_lights
 - id: cleanup_after_triggered_alarm_deactivated
   alias: Cleanup after alarm deactivated
   trigger:
@@ -188,10 +185,7 @@
     from: triggered
     to: disarmed
   action:
-  - service: switch.turn_off
-    entity_id: switch.gateway_0_7
-  - service: switch.turn_off
-    entity_id: switch.gateway_0_8
+  - service: script.turn_off_terrace_lights
 - id: light_up_terrace_when_dark
   alias: Lit terrace up when dark
   trigger:
@@ -210,7 +204,6 @@
     at: '22:30:00'
   action:
   - service: script.turn_off_terrace_lights
-  - service: script.turn_off_christmas_tree
 - id: turn_off_garden_lights_in_late_evening
   alias: Turn off garden lights late evening
   trigger:
@@ -218,32 +211,3 @@
     at: '21:30:00'
   action:
   - service: script.turn_off_terrace_lights
-- id: turn_on_christmas_tree_in_the_morning
-  trigger:
-    platform: time
-    at: '06:00:00'
-  condition:
-    condition: state
-    entity_id: group.users
-    state: 'home'
-  action:
-  - service: script.turn_on_christmas_tree
-  alias: Turn on christmas tree in the morning
-- id: turn_off_christmas_tree_when_everyone_leaves_house
-  alias: Turn off christmas tree when noone home
-  trigger:
-  - platform: state
-    entity_id: group.users
-    to: not_home
-  action:
-  - service: script.turn_off_christmas_tree
-- id: turn_on_christmas_tree_when_someone_comes_home
-  alias: Turn on christmas tree when someone comes home
-  trigger:
-  - platform: state
-    entity_id: group.users
-    to: 'home'
-    for:
-      minutes: 1
-  action:
-  - service: script.turn_on_christmas_tree

@@ -69,22 +69,20 @@ sensor:
       bedroom_2_controller_dead:
         value_template: >
           {% if states.binary_sensor.bedroom_2_sensor_node_3_99.last_updated %}
-          {%  set last_updated = states.binary_sensor.bedroom_2_sensor_node_3_99.last_updated %}
+          {{as_timestamp(now()) - as_timestamp(states.binary_sensor.bedroom_2_sensor_node_3_99.last_updated) > 3600}}
           {% else %}
-          {% set last_updated = now() %}
+          {{false}}
           {% endif %}
-          {{as_timestamp(now()) - as_timestamp(last_updated) > 3600}}
         friendly_name: 'Kids bedroom controller not reporting for 1 hour'
         entity_id:
           - sensor.date__time
       bedroom_controller_dead:
         value_template: >
           {% if states.binary_sensor.bedroom_sensor_node_4_99.last_updated %}
-          {%  set last_updated = states.binary_sensor.bedroom_sensor_node_4_99.last_updated %}
+          {{as_timestamp(now()) - as_timestamp(states.binary_sensor.bedroom_sensor_node_4_99.last_updated) > 3600}}
           {% else %}
-          {% set last_updated = now() %}
+          {{false}}
           {% endif %}
-          {{as_timestamp(now()) - as_timestamp(last_updated) > 3600}}
         friendly_name: 'Bedroom controller not reporting for 1 hour'
         entity_id: 
           - sensor.date__time     
@@ -92,11 +90,10 @@ sensor:
         friendly_name: 'Living room controller not reporting for 1 hour'
         value_template: >
           {% if states.binary_sensor.living_room_sensor_node_2_99.last_updated %}
-          {%  set last_updated = states.binary_sensor.living_room_sensor_node_2_99.last_updated %}
+          {{as_timestamp(now()) - as_timestamp(states.binary_sensor.living_room_sensor_node_2_99.last_updated) > 3600}}
           {% else %}
-          {% set last_updated = now() %}
+          {{false}}
           {% endif %}
-          {{as_timestamp(now()) - as_timestamp(last_updated) > 3600}}
         entity_id:
           - sensor.date__time
 
@@ -124,9 +121,10 @@ mysensors:
 
 device_tracker:
   - platform: nmap_tracker
-    hosts: 192.168.0.100-105
+    hosts: 192.168.0.101-103
     track_new_devices: false
-    scan_options: -F --host-timeout 50s
+    interval_seconds: 180
+#    scan_options: -F --host-timeout 30s
   - platform: owntracks
     track_new_devices: false
     waypoints: true
@@ -171,8 +169,23 @@ shell_command:
 switch:
   - platform: broadlink
     host: 192.168.0.110
-    mac: 'B8:27:EB:95:35:1E'
+    mac: 'b4:43:0d:f9:1a:32'
     friendly_name: 'Broadlink IR controller'
     type: rm_mini
     
 script: !include scripts.yaml
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.1.111:
+        name: Living Room
+        transition: 1000
+#        use_music_mode: True #(defaults to False)
+#        save_on_change: False #(defaults to True)
+
+climate:
+  - platform: eq3btsmart
+    devices:
+      living_room1:
+        mac: '00:1A:22:09:EB:DF'
