@@ -1,0 +1,5 @@
+- name: jepp
+  latitude: 54.405627
+  longitude: 18.576546
+  radius: 200
+  icon: mdi:laptop

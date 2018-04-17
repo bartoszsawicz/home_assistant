@@ -1,6 +1,6 @@
-
 default_view:
   view: true
+  name: overview
   entities:
     - group.tv
     - group.yr_weather
@@ -31,16 +31,13 @@ security:
     - alert.noheartbeat_living_room
 twigg: 
   entities:
-#    - device_tracker.twigg_owntracks
-    - device_tracker.twigg_nmap
+    - device_tracker.google_maps_102528977950832312966
 gburek: 
   entities:
-    - device_tracker.gburek_nmap
-#    - device_tracker.gburek_owntracks
+    - device_tracker.google_maps_108032074478922062341
 matixy: 
   entities:
-    - device_tracker.matixy_nmap
-#    - device_tracker.matixy_owntracks
+    - device_tracker.google_maps_101907626605043878038
 yr_weather:
   name: Yr
   entities:

@@ -113,30 +113,12 @@
     data:
       entity_id: alarm_control_panel.house
       code: 5464
-- id: alarm_armed_enable_motion_detection
-  alias: '[Alarm] Away Mode Armed - Enable Camera Motion Detection'
-  initial_state: 'off'
-  trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    to: armed_away
-  action:
-  - service: shell_command.start_motion_detection
-- id: alarm_disarmed_disable_motion_detection
-  alias: '[Alarm] Disarmed - Disable Camera Motion Detection'
-  initial_state: 'off'
-  trigger:
-  - platform: state
-    entity_id: alarm_control_panel.house
-    to: disarmed
-  action:
-  - service: shell_command.stop_motion_detection
 - id: alert_when_cold_and_window_open_for_too_long
   alias: Alert when window open for long time
   condition:
     condition: numeric_state
     entity_id: sensor.yr_temperature
-    below: 15
+    below: 10
   trigger:
     platform: state
     entity_id:
@@ -201,7 +183,7 @@
   alias: Make sure everything is turned off at night
   trigger:
     platform: time
-    at: '22:30:00'
+    at: '23:00:00'
   action:
   - service: script.turn_off_terrace_lights
 - id: turn_off_garden_lights_in_late_evening

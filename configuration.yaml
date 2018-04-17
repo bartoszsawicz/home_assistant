@@ -97,13 +97,6 @@ sensor:
         entity_id:
           - sensor.date__time
 
-binary_sensor:
-  - platform: command_line
-    name: Living room camera motion detection 
-    command: /home/homeassistant/scripts/any_files_modified_last_minutes.sh 1
-    scan_interval: 5
-    device_class: motion
-
 # Text to speech
 tts:
   platform: google
@@ -113,23 +106,19 @@ automation: !include automations.yaml
 alert: !include alerts.yaml
 alarm_control_panel: !include alarm.yaml
 panel_custom: !include panel_custom.yaml
-
+zone: !include zones.yaml
 mysensors:
   gateways:
     - device: '/dev/ttyUSB0'
   version: 2.0  
 
 device_tracker:
-  - platform: nmap_tracker
-    hosts: 192.168.0.101-103
-    track_new_devices: false
-    interval_seconds: 180
-#    scan_options: -F --host-timeout 30s
-  - platform: owntracks
-    track_new_devices: false
-    waypoints: true
-    waypoints_whitelist:
-      - twigg
+  - platform: google_maps
+    username: !secret google_user
+    password: !secret google_password
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
 
 mqtt:
   broker: 127.0.0.1
@@ -140,6 +129,10 @@ mqtt:
   password: !secret mqtt_password
 
 notify:
+  - name: push
+    platform: html5
+    gcm_api_key: !secret firebase_server_key
+    gcm_sender_id: !secret firebase_sender_id
   - name: ha_discord
     platform: discord
     token: !secret discord_token
@@ -162,9 +155,6 @@ logger:
   default: warn
   logs:
     custom_components.alarm_control_panel.bwalarm: info
-shell_command:
-  start_motion_detection: /home/homeassistant/scripts/start_camera_detection.sh
-  stop_motion_detection: /home/homeassistant/scripts/stop_camera_detection.sh
 
 switch:
   - platform: broadlink
