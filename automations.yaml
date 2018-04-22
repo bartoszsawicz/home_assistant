@@ -100,16 +100,56 @@
 # Ready for night
 #
 - id: close_kitchen_blinds_at_sunset
+  alias: Close kitchen blinds after sunset
   trigger:
     platform: sun
     event: sunset
-    offset: '+01:00:00'
+    offset: '+01:30:00'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.living_room_sensor_node_2_3
+      state: 'off'
+    - condition: state
+      entity_id: cover.level
+      state: 'open'
   action:
   - service: cover.close_cover
     data:
       entity_id: cover.level
-  
 
+- id: close_kitchen_blinds_at_sunset_notify
+  alias: 'Close kitchen blinds after sunset - misifre notification'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+01:30:00'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.living_room_sensor_node_2_3
+      state: 'on'
+    - condition: state
+      entity_id: cover.level
+      state: 'open'
+  action:
+  - service: notify.push
+    data:
+      message: 'Not closing kitchen blinds, as window is open.'
+      data:
+        actions:
+          - action: 'close_kitchen_blinds'
+            title: 'Close anyway'
+
+- id: close_kitchen_blinds_event
+  alias: Close kitchen blinds override
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: 'close_kitchen_blinds'
+  action:
+  - service: cover.close_cover
+    data:
+      entity_id: cover.level
 
 #
 # GARDEN sprinklers and lights
