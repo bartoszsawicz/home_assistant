@@ -1,3 +1,119 @@
+#
+# Waking up
+#
+- id: open_kitchen_blinds_in_the_morning_weekdays
+  alias: Open blinds at 6 on weekdays
+  trigger:
+    platform: time
+    at: 06:00:00
+  condition:
+    - condition: sun
+      after: sunrise
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: template
+      value_template: "{{ is_state('group.users', 'home') }}"
+  action:
+  - service: cover.set_cover_position
+    data:
+      entity_id: cover.level
+      position: 50
+- id: open_kitchen_blinds_in_the_morning_weekend
+  alias: Open blinds at 7:30 on weekends
+  trigger:
+    platform: time
+    at: 07:30:00
+  condition:
+    - condition: sun
+      after: sunrise
+    - condition: time
+      weekday:
+        - sat
+        - sun
+    - condition: template
+      value_template: "{{ is_state('group.users', 'home') }}"
+  action:
+  - service: cover.open_cover
+    data:
+      entity_id: cover.level
+- id: open_kitchen_blinds_on_sunrise_weekdays
+  alias: Open blinds on sunrise on weekdays
+  trigger:
+    platform: sun
+    event: sunrise
+  condition:
+    - condition: time
+      after: 05:55:00
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: template
+      value_template: "{{ is_state('group.users', 'home') }}"
+  action:
+  - service: cover.set_cover_position
+    data:
+      entity_id: cover.level
+      position: 50
+- id: open_kitchen_blinds_on_sunrise_weekdays
+  alias: Open blinds on sunrise on weekdays
+  trigger:
+    platform: sun
+    event: sunrise
+  condition:
+    - condition: time
+      after: 07:25:00
+      weekday:
+        - sat
+        - sun
+    - condition: template
+      value_template: "{{ is_state('group.users', 'home') }}"
+  action:
+  - service: cover.open_cover
+    data:
+      entity_id: cover.level
+
+#
+# Leaving for work and school
+#
+- id: close_blinds_after_leaving_home
+  alias: Close blinds whene everyon leaves for work/school
+  trigger:
+    platform: state
+    entity_id: group.users
+    to: not_home
+    for:
+      minutes: 20
+  action:
+  - service: cover.close_cover
+    data:
+      entity_id: cover.level
+
+#
+# Ready for night
+#
+- id: close_kitchen_blinds_at_sunset
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+01:00:00'
+  action:
+  - service: cover.close_cover
+    data:
+      entity_id: cover.level
+  
+
+
+#
+# GARDEN sprinklers and lights
+#
 - id: turn_on_sprinkler1
   alias: Turn on 1st sprinkler
   initial_state: 'off'
@@ -20,6 +136,30 @@
   action:
     service: homeassistant.turn_off
     entity_id: switch.sprinkler_1_1
+
+- id: light_up_terrace_when_dark
+  alias: Lit terrace up when dark
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: '+01:00:00'
+  condition:
+    condition: template
+    value_template: "{{ not is_state('group.users', 'home') }}"
+  action:
+  - service: script.turn_on_terrace_lights
+- id: turn_off_garden_lights_in_late_evening
+  alias: Turn off garden lights late evening
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+04:00:00'
+  action:
+  - service: script.turn_off_terrace_lights
+
+#
+# Alarm
+#
 - id: alarm_armed_away
   alias: '[Alarm] Away Mode Armed'
   trigger:
@@ -95,7 +235,7 @@
     entity_id: group.users
     to: not_home
     for:
-      minutes: 20
+      minutes: 21
   action:
   - service: alarm_control_panel.alarm_arm_away
 - id: disarm_alarm_when_user_comes_home
@@ -113,27 +253,6 @@
     data:
       entity_id: alarm_control_panel.house
       code: 5464
-- id: alert_when_cold_and_window_open_for_too_long
-  alias: Alert when window open for long time
-  condition:
-    condition: numeric_state
-    entity_id: sensor.yr_temperature
-    below: 10
-  trigger:
-    platform: state
-    entity_id:
-    - binary_sensor.living_room_sensor_node_2_2
-    - binary_sensor.living_room_sensor_node_2_3
-    - binary_sensor.living_room_sensor_node_2_4
-    - binary_sensor.bedroom_2_sensor_node_3_2
-    - binary_sensor.bedroom_sensor_node_4_2
-    to: 'on'
-    for:
-      minutes: 20
-  action:
-  - service: notify.discord_alert
-    data_template:
-      message: '{{ trigger.to_state.attributes.friendly_name }} is opened too long'
 - id: blink_garden1_light_when_alarm_triggered
   alias: Blink Garden Terrace Light When Alarm Triggered
   condition:
@@ -168,28 +287,29 @@
     to: disarmed
   action:
   - service: script.turn_off_terrace_lights
-- id: light_up_terrace_when_dark
-  alias: Lit terrace up when dark
-  trigger:
-  - platform: sun
-    event: sunset
-    offset: '+01:00:00'
+
+#
+# Warnings, notifications
+#
+- id: alert_when_cold_and_window_open_for_too_long
+  alias: Alert when window open for long time
   condition:
-    condition: template
-    value_template: "{{ not is_state('group.users', 'home') }}"
-  action:
-  - service: script.turn_on_terrace_lights
-- id: turn_off_everything_at_night
-  alias: Make sure everything is turned off at night
+    condition: numeric_state
+    entity_id: sensor.yr_temperature
+    below: 10
   trigger:
-    platform: time
-    at: '23:00:00'
+    platform: state
+    entity_id:
+    - binary_sensor.living_room_sensor_node_2_2
+    - binary_sensor.living_room_sensor_node_2_3
+    - binary_sensor.living_room_sensor_node_2_4
+    - binary_sensor.bedroom_2_sensor_node_3_2
+    - binary_sensor.bedroom_sensor_node_4_2
+    to: 'on'
+    for:
+      minutes: 20
   action:
-  - service: script.turn_off_terrace_lights
-- id: turn_off_garden_lights_in_late_evening
-  alias: Turn off garden lights late evening
-  trigger:
-    platform: time
-    at: '21:30:00'
-  action:
-  - service: script.turn_off_terrace_lights
+  - service: notify.discord_alert
+    data_template:
+      message: '{{ trigger.to_state.attributes.friendly_name }} is opened too long'
+

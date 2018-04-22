@@ -109,7 +109,7 @@ panel_custom: !include panel_custom.yaml
 zone: !include zones.yaml
 mysensors:
   gateways:
-    - device: '/dev/ttyUSB0'
+    - device: '/dev/arduino'
   version: 2.0  
 
 device_tracker:
@@ -179,3 +179,32 @@ climate:
     devices:
       living_room1:
         mac: '00:1A:22:09:EB:DF'
+xiaomi_aqara:
+  gateways:
+    - key: !secret xiaomi_gateway_key
+zwave:
+  usb_path: /dev/zwave
+
+google_assistant:
+  project_id: home-assistant-201418
+  client_id: !secret google_assistant_client_id
+  access_token: !secret google_assistant_access_token
+  api_key: !secret google_assistant_api_key
+  expose_by_default: false
+  entity_config:
+    cover.level:
+      name: Kitchen blinds
+      expose: true
+      room: Kitchen
+    switch.switch_2:
+      name: Sofa lamp
+      expose: true
+      room: Living room
+      aliases:
+        - sofa light
+    light.gateway_light_7811dc6c9735:
+      name: Gateway light
+      expose: true
+      room: Living room
+      aliases:
+        - xiaomi light

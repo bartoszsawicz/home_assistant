@@ -2,3 +2,155 @@ media_player.mibox3:
   name:
   platform: cast
   unique_id: 71e12046-480b-cede-f8ff-5c065c668be9
+sensor.illumination_158d00022518f0:
+  name:
+  platform: xiaomi_aqara
+  unique_id: lux158d00022518f0
+sensor.illumination_7811dc6c9735:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination7811dc6c9735
+binary_sensor.motion_sensor_158d00022518f0:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00022518f0
+light.gateway_light_7811dc6c9735:
+  name:
+  platform: xiaomi_aqara
+  unique_id: rgb7811dc6c9735
+sensor.illumination_158d0001e08b44:
+  name:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001e08b44
+binary_sensor.motion_sensor_158d0001e08b44:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001e08b44
+switch.switch:
+  name:
+  platform: zwave
+  unique_id: 2-72057594076282880
+switch.switch_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093060096
+sensor.alarm_type:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.alarm_level:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.unknown:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273090
+sensor.neo_coolcam_power_plug_12a_power:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273218
+sensor.neo_coolcam_power_plug_12a_voltage:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273346
+sensor.neo_coolcam_power_plug_12a_current:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273410
+sensor.neo_coolcam_power_plug_12a_exporting:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273600
+sensor.neo_coolcam_power_plug_12a_sourcenodeid:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.neo_coolcam_power_plug_12a_power_management:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305457
+sensor.neo_coolcam_power_plug_12a_previous_reading:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273106
+sensor.neo_coolcam_power_plug_12a_interval:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273123
+sensor.neo_coolcam_power_plug_12a_previous_reading_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273234
+sensor.neo_coolcam_power_plug_12a_interval_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273251
+sensor.neo_coolcam_power_plug_12a_previous_reading_3:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273362
+sensor.neo_coolcam_power_plug_12a_interval_3:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273379
+sensor.neo_coolcam_power_plug_12a_previous_reading_4:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273426
+sensor.neo_coolcam_power_plug_12a_interval_4:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273443
+cover.level:
+  name:
+  platform: zwave
+  unique_id: 4-72057594109853697
+cover.switch:
+  name:
+  platform: zwave
+  unique_id: 4-72057594109837312
+switch.switch_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594109837312
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_alarm_type:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082497
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_alarm_level:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082513
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_unknown:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050306
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_power:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050434
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_voltage:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050562
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_current:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050626
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_power_factor:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050690
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_exporting:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050816
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_previous_reading:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050322
+sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_interval:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050339

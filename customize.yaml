@@ -63,3 +63,14 @@ switch.gateway_0_9:
 alert.noheartbeat_bedroom_2: {}
 climate.living_room1:
   friendly_name: Living room large radiator
+binary_sensor.motion_sensor_158d00022518f0:
+  friendly_name: Kids bedroom motion sensor
+switch.switch_2:
+  friendly_name: Sofa lamp
+light.gateway_light_7811dc6c9735:
+  friendly_name: Gateway light
+binary_sensor.motion_sensor_158d0001e08b44:
+  friendly_name: Living room motion sensor
+cover.level:
+  friendly_name: Kitchen blinds
+  device_class: window

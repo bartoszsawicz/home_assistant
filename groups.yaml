@@ -4,6 +4,7 @@ default_view:
   entities:
     - group.tv
     - group.yr_weather
+    - group.kitchen
     - group.living_room
     - group.kids_bedroom
     - group.bedroom
@@ -46,19 +47,25 @@ yr_weather:
     - sensor.yr_wind_speed
     - sensor.yr_cloudiness
     - sensor.yr_humidity
+kitchen:
+  name: Kitchen
+  entities:
+    - cover.level
+    - binary_sensor.living_room_sensor_node_2_3
 living_room:
   name: Living room
   entities:
     - sensor.living_room_sensor_node_2_0
     - sensor.living_room_sensor_node_2_1
     - binary_sensor.living_room_sensor_node_2_2
-    - binary_sensor.living_room_sensor_node_2_3
     - binary_sensor.living_room_sensor_node_2_4
-    - binary_sensor.living_room_camera_motion_detection
     - climate.living_room1
+    - switch.switch_2
+    - binary_sensor.motion_sensor_158d0001e08b44
 kids_bedroom:
   name: Kids bedroom
   entities:
+    - binary_sensor.motion_sensor_158d00022518f0
     - binary_sensor.bedroom_2_sensor_node_3_2
     - sensor.bedroom_2_sensor_node_3_0
     - sensor.bedroom_2_sensor_node_3_1
