@@ -1,0 +1,5 @@
+blinds_can_be_opened_time: 
+  name: Blinds can be opened at day
+blinds_can_be_opened_users:
+  name: Blinds can be opened if someone is at home
+

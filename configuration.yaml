@@ -208,3 +208,6 @@ google_assistant:
       room: Living room
       aliases:
         - xiaomi light
+map:
+input_number: !include input_numbers.yaml
+input_boolean: !include input_booleans.yaml

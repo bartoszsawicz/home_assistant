@@ -1,0 +1,21 @@
+kitchen_blinds_morning_position:
+  name: Kitchen Blinds Morning Position
+  initial: 75
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+kitchen_blinds_default_position:
+  name: Kitchen Blinds Default Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+kitchen_blinds_saved_position:
+  name: Kitchen Blinds Saved Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'

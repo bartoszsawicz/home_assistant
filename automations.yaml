@@ -1,128 +1,120 @@
 #
 # Waking up
 #
-- id: open_kitchen_blinds_in_the_morning_weekdays
-  alias: Open blinds at 6 on weekdays
+- id: open_kitchen_blinds_in_the_morning
+  alias: Open blinds in the morning for some sun
   trigger:
-    platform: time
-    at: 06:00:00
+    platform: state
+    entity_id: input_boolean.blinds_can_be_opened_time
+    to: 'on'
   condition:
-    - condition: sun
-      after: sunrise
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-    - condition: template
-      value_template: "{{ is_state('group.users', 'home') }}"
+    condition: state
+    entity_id: input_boolean.blinds_can_be_opened_users
+    state: 'on'
   action:
   - service: cover.set_cover_position
-    data:
+    data_template:
       entity_id: cover.level
-      position: 50
-- id: open_kitchen_blinds_in_the_morning_weekend
-  alias: Open blinds at 7:30 on weekends
-  trigger:
-    platform: time
-    at: 07:30:00
-  condition:
-    - condition: sun
-      after: sunrise
-    - condition: time
-      weekday:
-        - sat
-        - sun
-    - condition: template
-      value_template: "{{ is_state('group.users', 'home') }}"
-  action:
-  - service: cover.open_cover
-    data:
-      entity_id: cover.level
-- id: open_kitchen_blinds_on_sunrise_weekdays
-  alias: Open blinds on sunrise on weekdays
-  trigger:
-    platform: sun
-    event: sunrise
-  condition:
-    - condition: time
-      after: 05:55:00
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-    - condition: template
-      value_template: "{{ is_state('group.users', 'home') }}"
-  action:
-  - service: cover.set_cover_position
-    data:
-      entity_id: cover.level
-      position: 50
-- id: open_kitchen_blinds_on_sunrise_weekdays
-  alias: Open blinds on sunrise on weekdays
-  trigger:
-    platform: sun
-    event: sunrise
-  condition:
-    - condition: time
-      after: 07:25:00
-      weekday:
-        - sat
-        - sun
-    - condition: template
-      value_template: "{{ is_state('group.users', 'home') }}"
-  action:
-  - service: cover.open_cover
-    data:
-      entity_id: cover.level
-
+      position: "{{ states('input_number.kitchen_blinds_morning_position') | int }}"
 #
-# Leaving for work and school
+# Leaving for work and school in the morning
 #
-- id: close_blinds_after_leaving_home
+- id: close_blinds_after_leaving_home_in_the_morning
   alias: Close blinds whene everyon leaves for work/school
   trigger:
     platform: state
-    entity_id: group.users
-    to: not_home
-    for:
-      minutes: 20
+    entity_id: input_boolean.blinds_can_be_opened_users
+    to: 'off'
+  condition:
+    condition: time
+    before: '10:00:00'
   action:
   - service: cover.close_cover
     data:
       entity_id: cover.level
+#
+# Leaving home during the day should store position so it is restored after they're back
+#
+- id: close_blinds_after_leaving_home
+  alias: Close blinds whene everyon leaves
+  trigger:
+    platform: state
+    entity_id: input_boolean.blinds_can_be_opened_users
+    to: 'off'
+  condition:
+    condition: time
+    after: '09:59:59'
+  action:
+  - service: input_number.set_value
+    data_template:
+      entity_id: input_number.kitchen_blinds_saved_position
+      value: "{{ states('cover.level.current_position') | int }}"      
+  - service: cover.close_cover
+    data:
+      entity_id: cover.level
+#
+# Coming back home during day should restore blinds to stored position
+#
+- id: open_kitchen_blinds_when_users_are_back_home
+  alias: Open blinds when someone comes home
+  trigger:
+    platform: state
+    entity_id: input_boolean.blinds_can_be_opened_users
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: input_boolean.blinds_can_be_opened_time
+    state: 'on'
+  action:
+  - service: cover.set_cover_position
+    data_template:
+      entity_id: cover.level
+      position: "{{ states('input_number.kitchen_blinds_saved_position') | int }}"
+#
+# Transit from 'morning' to 'default' blinds position
+#
+- id: open_kitchen_blinds_when_users_are_back_home
+  alias: Open blinds to default position after morning
+  trigger:
+    platform: time
+    at: '10:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.blinds_can_be_opened_time
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.blinds_can_be_opened_users
+      state: 'on'
+  action:
+  - service: cover.set_cover_position
+    data_template:
+      entity_id: cover.level
+      position: "{{ states('input_number.kitchen_blinds_saved_position') | int }}"
 
 #
 # Ready for night
 #
-- id: close_kitchen_blinds_at_sunset
+- id: close_kitchen_blinds_at_night
   alias: Close kitchen blinds after sunset
   trigger:
-    platform: sun
-    event: sunset
-    offset: '+01:30:00'
+    platform: state
+    entity_id: input_boolean.blinds_can_be_opened_time
+    to: 'off'
   condition:
-    - condition: state
-      entity_id: binary_sensor.living_room_sensor_node_2_3
-      state: 'off'
-    - condition: state
-      entity_id: cover.level
-      state: 'open'
+    condition: state
+    entity_id: binary_sensor.living_room_sensor_node_2_3
+    state: 'off'
   action:
   - service: cover.close_cover
     data:
       entity_id: cover.level
 
-- id: close_kitchen_blinds_at_sunset_notify
+- id: close_kitchen_blinds_at_night_misfire
   alias: 'Close kitchen blinds after sunset - misifre notification'
   trigger:
-    platform: sun
-    event: sunset
-    offset: '+01:30:00'
+    platform: state
+    entity_id: input_boolean.blinds_can_be_opened_time
+    to: 'on'
   condition:
     - condition: state
       entity_id: binary_sensor.living_room_sensor_node_2_3
@@ -151,6 +143,86 @@
     data:
       entity_id: cover.level
 
+#
+# Setting helpers for blinds control
+#
+- id: set_blinds_should_remain_closed_at_night
+  alias: '[Helper] blinds can be open by time = false'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+01:00:00'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.blinds_can_be_opened_time
+- id: set_blinds_can_be_open_during_day
+  alias: '[Helper] blinds can be open by time = true'
+  trigger:
+    platform: time
+    seconds: 30
+  condition:
+    condition: and
+    conditions:
+      - condition: state      # This condition is so this rule doesn't spam logbook during day
+        entity_id: input_boolean.blinds_can_be_opened_time
+        state: 'off'
+      - condition: sun  
+        after: sunrise
+        after_offset: '-00:30:00'
+      - condition: or
+        conditions:
+          - condition: time
+            after: '06:00:00'
+            before: '15:00:00'
+            weekday:
+              - mon
+              - tue
+              - wed
+              - thu
+              - fri
+          - condition: time
+            after: '07:30:00'
+            before: '15:00:00'
+            weekday:
+              - sat
+              - sun
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.blinds_can_be_opened_time
+- id: set_blinds_should_be_closed_when_users_are_absent
+  alias: '[Helper] blinds can be open by users = false'
+  trigger:
+    platform: state
+    entity_id: group.users
+    to: 'not_home'
+    for:
+      minutes: 15
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.blinds_can_be_opened_users
+- id: set_blinds_can_be_open_when_users_are_home
+  alias: '[Helper] blinds can be open by users = true'
+  trigger:
+    platform: state
+    entity_id: group.users
+    to: 'home'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.blinds_can_be_opened_users
+- id: reset_saved_position_at_night
+  alias: '[Helper] reset blinds saved position'
+  trigger:
+    platform: time
+    at: '00:00:00'
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kitchen_blinds_saved_position
+        value: "{{ states('input_number.kitchen_blinds_default_position') | int }}"
 #
 # GARDEN sprinklers and lights
 #

@@ -104,3 +104,11 @@ useful_scripts:
     - script.turn_off_christmas_tree
     - script.turn_on_terrace_lights
     - script.turn_off_terrace_lights
+settings:
+  name: Settings
+  view: yes
+  entities:
+    - input_number.kitchen_blinds_default_position
+    - input_number.kitchen_blinds_morning_position
+    - input_number.kitchen_blinds_saved_position
+
