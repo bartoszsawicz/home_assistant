@@ -1,0 +1,6 @@
+not_tracked_user: 
+  name: Can be set to 'home' when someone that is not tracked remains in the house
+  options:
+    - home
+    - not_home
+  initial: not_home  
