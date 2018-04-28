@@ -16,6 +16,7 @@ users:
     - group.twigg
     - group.gburek
     - group.matixy
+    - input_select.not_tracked_user
 automations:
   view: yes
   entities:
@@ -32,7 +33,8 @@ security:
     - alert.noheartbeat_living_room
 twigg: 
   entities:
-    - device_tracker.google_maps_102528977950832312966
+#    - device_tracker.google_maps_102528977950832312966
+    - device_tracker.galaxy_s8
 gburek: 
   entities:
     - device_tracker.google_maps_108032074478922062341
