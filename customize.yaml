@@ -59,13 +59,13 @@ switch.gateway_0_5:
   friendly_name: Kids bedroom ceiling light
 switch.gateway_0_6:
   friendly_name: Terrace garden power socket
-  icon: mdi-power-socket-eu
+  icon: mdi:power-socket-eu
 switch.gateway_0_7:
   friendly_name: Terrace garden light
-  icon: mdi-track-light
+  icon: mdi:track-light
 switch.gateway_0_8:
   friendly_name: Bedroom garden light
-  icon: mdi-track-light
+  icon: mdi:track-light
 switch.gateway_0_9:
   friendly_name: Alarm siren
 alert.noheartbeat_bedroom_2: {}
@@ -75,7 +75,7 @@ binary_sensor.motion_sensor_158d00022518f0:
   friendly_name: Kids bedroom motion sensor
 switch.switch_2:
   friendly_name: Sofa lamp
-  icon: mdi-floor-lampgit 
+  icon: mdi:floor-lamp
 light.gateway_light_7811dc6c9735:
   friendly_name: Gateway light
 binary_sensor.motion_sensor_158d0001e08b44:
@@ -83,14 +83,14 @@ binary_sensor.motion_sensor_158d0001e08b44:
 cover.level:
   friendly_name: Kitchen blinds
   device_class: window
-  icon: mdi-blinds
+  icon: mdi:blinds
 script.tv_onoff:
-  icon: mdi-television-on
+  icon: mdi:television-on
 script.tv_off:
-  icon: mdi-television-off
+  icon: mdi:television-off
 script.tv_volume_up:
-  icon: mdi-volume-plus
+  icon: mdi:volume-plus
 script.tv_volume_down:
-  icon: mdi-volume-minus
+  icon: mdi:volume-minus
 vacuum.xiaomi_vacuum_cleaner:
-  icon: mdi-robot-vacuum-variant
+  icon: mdi:robot-vacuum-variant
