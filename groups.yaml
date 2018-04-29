@@ -9,6 +9,7 @@ default_view:
     - group.kids_bedroom
     - group.bedroom
     - group.garden
+    - group.all_vacuum_cleaners
     - group.useful_scripts
 users:
   view: yes
@@ -33,14 +34,13 @@ security:
     - alert.noheartbeat_living_room
 twigg: 
   entities:
-#    - device_tracker.google_maps_102528977950832312966
     - device_tracker.galaxy_s8
 gburek: 
   entities:
-    - device_tracker.google_maps_108032074478922062341
+    - device_tracker.redmi
 matixy: 
   entities:
-    - device_tracker.google_maps_101907626605043878038
+    - device_tracker.xperia_z2
 yr_weather:
   name: Yr
   entities:
@@ -63,6 +63,7 @@ living_room:
     - binary_sensor.living_room_sensor_node_2_4
     - climate.living_room1
     - switch.switch_2
+    - vacuum.xiaomi_vacuum_cleaner
     - binary_sensor.motion_sensor_158d0001e08b44
 kids_bedroom:
   name: Kids bedroom

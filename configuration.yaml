@@ -113,12 +113,6 @@ mysensors:
   version: 2.0  
 
 device_tracker:
-#  - platform: google_maps
-#    username: !secret google_user
-#    password: !secret google_password
-#    new_device_defaults:
-#      track_new_devices: True
-#      hide_if_away: False
   - platform: bluetooth_tracker
 
 mqtt:
@@ -209,7 +203,10 @@ google_assistant:
       room: Living room
       aliases:
         - xiaomi light
-map:
 input_number: !include input_numbers.yaml
 input_boolean: !include input_booleans.yaml
 input_select: !include input_selects.yaml
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.0.116
+    token: !secret roborock_token
