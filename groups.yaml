@@ -9,7 +9,6 @@ default_view:
     - group.kids_bedroom
     - group.bedroom
     - group.garden
-    - group.all_vacuum_cleaners
     - group.useful_scripts
 users:
   view: yes
