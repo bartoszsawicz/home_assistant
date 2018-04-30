@@ -27,7 +27,7 @@
     to: 'off'
   condition:
     condition: time
-    after: '10:00:00'
+    after: '09:30:00'
   action:
   - service: input_number.set_value
     data_template:
@@ -91,7 +91,7 @@
   alias: Set saved blinds position to default after morning is over 
   trigger:
     platform: time
-    at: '10:00:00'
+    at: '09:30:00'
   action:
   - service: input_number.set_value
     data_template:
