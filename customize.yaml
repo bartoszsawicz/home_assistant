@@ -85,7 +85,7 @@ cover.level:
   device_class: window
   icon: mdi:blinds
 script.tv_onoff:
-  icon: mdi:television-on
+  icon: mdi:television
 script.tv_off:
   icon: mdi:television-off
 script.tv_volume_up:

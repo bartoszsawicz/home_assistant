@@ -107,9 +107,9 @@
     entity_id: input_boolean.blinds_can_be_opened_time
     to: 'off'
   condition:
-    condition: state
-    entity_id: binary_sensor.living_room_sensor_node_2_3
-    state: 'off'
+    - condition: state
+      entity_id: binary_sensor.living_room_sensor_node_2_3
+      state: 'off'
   action:
   - service: cover.close_cover
     data:

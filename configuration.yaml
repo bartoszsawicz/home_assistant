@@ -48,7 +48,26 @@ history:
 
 # View all events in a logbook
 logbook:
-
+  exclude:
+    entities:
+      - sensor.neo_coolcam_power_plug_12a_current
+      - sensor.neo_coolcam_power_plug_12a_power_management
+      - sensor.neo_coolcam_power_plug_12a_sourcenodeid
+      
+recorder:
+  exclude:
+    entities:
+      - sensor.date__time
+      - sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_alarm_level
+      - sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_alarm_type
+      - sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_exporting
+      - sensor.neo_coolcam_power_plug_12a_exporting
+      - sensor.alarm_level
+      - sensor.alarm_type      
+      - group.kids_bedroom
+      - group.bedroom
+      - group.living_room
+      - group.kitchen
 # Track the sun
 sun:
 
