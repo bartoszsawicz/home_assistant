@@ -94,3 +94,7 @@ script.tv_volume_down:
   icon: mdi:volume-minus
 vacuum.xiaomi_vacuum_cleaner:
   icon: mdi:robot-vacuum-variant
+sensor.illumination_158d0001e08b44:
+  friendly_name: Living house sensor.illumination
+sensor.illumination_158d00022518f0:
+  friendly_name: Kids bedroom illumination

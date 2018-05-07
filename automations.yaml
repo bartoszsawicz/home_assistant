@@ -32,7 +32,7 @@
   - service: input_number.set_value
     data_template:
       entity_id: input_number.kitchen_blinds_saved_position
-      value: "{{ states('cover.level.current_position') | int }}"
+      value: "{{ state_attr('cover.level','current_position') | int }}"
   
 #
 # Leaving home during the day should close blinds
