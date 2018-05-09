@@ -120,7 +120,7 @@
   trigger:
     platform: state
     entity_id: input_boolean.blinds_can_be_opened_time
-    to: 'on'
+    to: 'off'
   condition:
     - condition: state
       entity_id: binary_sensor.living_room_sensor_node_2_3
@@ -387,6 +387,25 @@
   - service: switch.toggle
     data:
       entity_id: switch.gateway_0_8
+- id: tv_speak_when_alarm_triggered
+  alias: Say warning through tv box when alarm triggered
+  condition:
+    condition: state
+    entity_id: alarm_control_panel.house
+    state: triggered
+  trigger:
+    platform: time
+    seconds: /7
+  action:
+  - service: tts.google_say
+    data:
+      message: 'Alarm aktywowany! Właściciele zostali powiadomieni'
+      language: 'pl'
+      entity_id: media_player.mibox3
+  - service: switch.toggle
+    data:
+      entity_id: switch.gateway_0_8
+      
 - id: cleanup_after_triggered_alarm_timeouts
   alias: Garden lights on after triggered alarm timeouts
   trigger:

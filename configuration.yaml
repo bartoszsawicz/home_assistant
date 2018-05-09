@@ -133,7 +133,8 @@ mysensors:
 
 device_tracker:
   - platform: bluetooth_tracker
-
+    new_device_defaults:
+      track_new_devices: False
 mqtt:
   broker: 127.0.0.1
   port: 8125
