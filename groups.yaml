@@ -23,6 +23,7 @@ automations:
     - group.all_automations
     - group.all_devices
     - group.all_switches
+    - group.users
 security:
   view: yes
   entities:
