@@ -1,7 +1,7 @@
 #
 # Waking up
 #
-- id: open_kitchen_blinds_in_the_morning
+- id: open_blinds_in_the_morning
   alias: Open blinds in the morning for some sun
   trigger:
     platform: state
@@ -12,10 +12,7 @@
     entity_id: input_boolean.blinds_can_be_opened_users
     state: 'on'
   action:
-  - service: cover.set_cover_position
-    data_template:
-      entity_id: cover.level
-      position: "{{ states('input_number.kitchen_blinds_morning_position') | int }}"
+    - service: script.open_blinds      
 #
 # Store current blinds position after leaving home
 #
@@ -29,11 +26,7 @@
     condition: time
     after: '09:30:00'
   action:
-  - service: input_number.set_value
-    data_template:
-      entity_id: input_number.kitchen_blinds_saved_position
-      value: "{{ state_attr('cover.level','current_position') | int }}"
-  
+  - service: script.store_blinds_state
 #
 # Leaving home during the day should close blinds
 #
@@ -46,13 +39,11 @@
     for:
       seconds: 10
   action:
-  - service: cover.close_cover
-    data:
-      entity_id: cover.level
+    - service: script.close_blinds      
 #
 # Coming back home during day should restore blinds to stored position
 #
-- id: open_kitchen_blinds_when_users_are_back_home
+- id: open_blinds_when_users_are_back_home
   alias: Open blinds when someone comes home
   trigger:
     platform: state
@@ -63,15 +54,27 @@
     entity_id: input_boolean.blinds_can_be_opened_time
     state: 'on'
   action:
-  - service: cover.set_cover_position
-    data_template:
-      entity_id: cover.level
-      position: "{{ states('input_number.kitchen_blinds_saved_position') | int }}"
+    - service: script.open_blinds      
+- id: set_saved_position_to_default_after_morning
+  alias: Set saved blinds position to default after morning is over 
+  trigger:
+    platform: time
+    at: '09:29:55'
+  action:
+    - service: script.set_default_blinds_position
+- id: set_saved_position_to_morning_before_dawn
+  alias: Set saved blinds position to morning before morning 
+  trigger:
+    platform: time
+    at: '04:00:00'
+  action:
+    - service: script.set_morning_blinds_position
+    
 #
 # Transit from 'morning' to 'default' blinds position
 #
-- id: open_kitchen_blinds_when_users_are_back_home
-  alias: Open blinds to default position after morning
+- id: open_blinds_to_their_default_position_after_morning
+  alias: Trigger open blinds after saved position changed to default
   trigger:
     platform: time
     at: '09:30:00'
@@ -83,25 +86,12 @@
       entity_id: input_boolean.blinds_can_be_opened_users
       state: 'on'
   action:
-  - service: cover.set_cover_position
-    data_template:
-      entity_id: cover.level
-      position: "{{ states('input_number.kitchen_blinds_saved_position') | int }}"
-- id: set_saved_position_to_default_after_morning
-  alias: Set saved blinds position to default after morning is over 
-  trigger:
-    platform: time
-    at: '09:30:00'
-  action:
-  - service: input_number.set_value
-    data_template:
-      entity_id: input_number.kitchen_blinds_saved_position
-      value: "{{ states('input_number.kitchen_blinds_default_position') | int }}"
+    - service: script.open_blinds  
 #
 # Ready for night
 #
-- id: close_kitchen_blinds_at_night
-  alias: Close kitchen blinds after sunset
+- id: close_blinds_at_night
+  alias: Close blinds after sunset
   trigger:
     platform: state
     entity_id: input_boolean.blinds_can_be_opened_time
@@ -111,9 +101,7 @@
       entity_id: binary_sensor.living_room_sensor_node_2_3
       state: 'off'
   action:
-  - service: cover.close_cover
-    data:
-      entity_id: cover.level
+  - service: script.close_blinds
 
 - id: close_kitchen_blinds_at_night_misfire
   alias: 'Close kitchen blinds after sunset - misifre notification'
@@ -148,6 +136,17 @@
   - service: cover.close_cover
     data:
       entity_id: cover.level
+- id: close_kids_blinds_event
+  alias: Close kids bedroom blinds override
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: 'close_kids_bedroom_blinds'
+  action:
+  - service: cover.close_cover
+    data:
+      entity_id: cover.level_2
 
 #
 # Setting helpers for blinds control
