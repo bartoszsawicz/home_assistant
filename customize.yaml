@@ -32,8 +32,7 @@ group.all_devices:
   hidden: false
 group.all_switches:
   hidden: false
-group.users:
-  hidden: false
+group.users: {}
 sun.sun:
   hidden: true
 sensor.yr_cloudiness:
