@@ -99,3 +99,7 @@ sensor.illumination_158d0001e08b44:
   friendly_name: Living house sensor.illumination
 sensor.illumination_158d00022518f0:
   friendly_name: Kids bedroom illumination
+cover.level_2:
+  friendly_name: Kids bedroom blinds
+  device_class: window
+  icon: mdi:blinds
