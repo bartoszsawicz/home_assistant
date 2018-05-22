@@ -54,7 +54,8 @@
     entity_id: input_boolean.blinds_can_be_opened_time
     state: 'on'
   action:
-    - service: script.open_blinds      
+    - service: script.open_blinds    
+
 - id: set_saved_position_to_default_after_morning
   alias: Set saved blinds position to default after morning is over 
   trigger:
@@ -96,58 +97,51 @@
     platform: state
     entity_id: input_boolean.blinds_can_be_opened_time
     to: 'off'
-  condition:
-    - condition: state
-      entity_id: binary_sensor.living_room_sensor_node_2_3
-      state: 'off'
   action:
-  - service: script.close_blinds
+  - service: script.close_blinds_if_windows_closed
 
-- id: close_kitchen_blinds_at_night_misfire
-  alias: 'Close kitchen blinds after sunset - misifre notification'
+- id: ask_to_override_closing_blinds_if_window_open
+  alias: Ask users to override closing blinds if window is open 
   trigger:
-    platform: state
-    entity_id: input_boolean.blinds_can_be_opened_time
-    to: 'off'
+    - platform: event
+      event_type: close_blinds_request
   condition:
-    - condition: state
-      entity_id: binary_sensor.living_room_sensor_node_2_3
-      state: 'on'
-    - condition: state
-      entity_id: cover.level
-      state: 'open'
+    - condition: template
+      value_template: "{{is_state(trigger.event.data.window_entity_id, 'on')}}"
   action:
   - service: notify.push
-    data:
-      message: 'Not closing kitchen blinds, as window is open.'
+    data_template:
+      message: "Not closing {{state_attr(trigger.event.data.blinds_entity_id, 'friendly_name')}}, as window is open."
       data:
         actions:
-          - action: 'close_kitchen_blinds'
+          - action: "close_blinds_override_{{trigger.event.data.blinds_entity_id}}"
             title: 'Close anyway'
 
-- id: close_kitchen_blinds_event
-  alias: Close kitchen blinds override
+- id: close_blinds_if_corresponding_window_closed
+  alias: Close blinds if corresponding window is open 
+  trigger:
+    - platform: event
+      event_type: close_blinds_request
+  condition:
+    - condition: template
+      value_template: "{{is_state(trigger.event.data.window_entity_id, 'off')}}"
+  action:
+  - service: cover.close_cover
+    data_template:
+      entity_id: "{{ trigger.event.data.blinds_entity_id }}"      
+  
+- id: close_blinds_override_event
+  alias: Close blinds override
   trigger:
     platform: event
     event_type: html5_notification.clicked
-    event_data:
-      action: 'close_kitchen_blinds'
+  condition:
+    condition: template
+    value_template: "{{trigger.event.data.action.startswith('close_blinds_override_')}}"
   action:
   - service: cover.close_cover
-    data:
-      entity_id: cover.level
-- id: close_kids_blinds_event
-  alias: Close kids bedroom blinds override
-  trigger:
-    platform: event
-    event_type: html5_notification.clicked
-    event_data:
-      action: 'close_kids_bedroom_blinds'
-  action:
-  - service: cover.close_cover
-    data:
-      entity_id: cover.level_2
-
+    data_template:
+      entity_id: "{{ trigger.event.data.action[22:] }}"
 #
 # Setting helpers for blinds control
 #
