@@ -122,10 +122,10 @@ blinds_params:
   entities:
     - input_number.kitchen_blinds_default_position
     - input_number.kitchen_blinds_morning_position
-    - input_number.kids_room_blinds_default_position
-    - input_number.kids_room_blinds_morning_position
+    - input_number.kids_bedroom_blinds_morning_position
+    - input_number.kids_bedroom_blinds_morning_position
 debug:
   name: Debug
   entities:
     - input_number.kitchen_blinds_saved_position
-    - input_number.kids_room_blinds_saved_position
+    - input_number.kids_bedroom_blinds_saved_position
