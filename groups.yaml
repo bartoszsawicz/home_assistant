@@ -70,7 +70,7 @@ living_room:
 kids_bedroom:
   name: Kids bedroom
   entities:
-    - cover.level_2
+    - cover.qubino_zmnhcdx_flush_shutter_level
     - binary_sensor.bedroom_2_sensor_node_3_2
     - sensor.bedroom_2_sensor_node_3_0
     - sensor.bedroom_2_sensor_node_3_1

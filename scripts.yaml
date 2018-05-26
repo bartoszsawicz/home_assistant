@@ -8,7 +8,7 @@ store_blinds_state:
     - service: input_number.set_value
       data_template:
         entity_id: input_number.kids_bedroom_blinds_saved_position
-        value: "{{ state_attr('cover.level_2','current_position') | int }}"
+        value: "{{ state_attr('cover.qubino_zmnhcdx_flush_shutter_level','current_position') | int }}"
 set_default_blinds_position:
   alias: Sets default value as saved blinds position
   sequence:
@@ -40,7 +40,7 @@ open_blinds:
         position: "{{ states('input_number.kitchen_blinds_saved_position') | int }}"
     - service: cover.set_cover_position
       data_template:
-        entity_id: cover.level_2
+        entity_id: cover.qubino_zmnhcdx_flush_shutter_level
         position: "{{ states('input_number.kids_bedroom_blinds_saved_position') | int }}"
 close_blinds:
   alias: Close all blinds
@@ -50,7 +50,7 @@ close_blinds:
         entity_id: cover.level
     - service: cover.close_cover
       data:
-        entity_id: cover.level_2
+        entity_id: cover.qubino_zmnhcdx_flush_shutter_level
 close_blinds_if_windows_closed:
   alias: Close all blinds if windows are closed. Asks users otherwise
   sequence:
@@ -60,7 +60,7 @@ close_blinds_if_windows_closed:
         window_entity_id: binary_sensor.living_room_sensor_node_2_3
     - event: close_blinds_request
       event_data:
-        blinds_entity_id: cover.level_2
+        blinds_entity_id: cover.qubino_zmnhcdx_flush_shutter_level
         window_entity_id: binary_sensor.bedroom_2_sensor_node_3_2
     
 tv_onoff:
