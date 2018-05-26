@@ -114,7 +114,18 @@ settings:
   name: Settings
   view: yes
   entities:
+    - group.blinds_params
+    - group.debug
+blinds_params:
+  name: Blinds params
+  view: yes
+  entities:
     - input_number.kitchen_blinds_default_position
     - input_number.kitchen_blinds_morning_position
+    - input_number.kitchen_blinds_default_position
+    - input_number.kitchen_blinds_morning_position
+debug:
+  name: Debug
+  entities:
     - input_number.kitchen_blinds_saved_position
-
+    - input_number.kitchen_blinds_saved_position
