@@ -1,3 +1,68 @@
+store_blinds_state:
+  alias: Save blinds current position so it can be used when they're reopened
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kitchen_blinds_saved_position
+        value: "{{ state_attr('cover.level','current_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kids_bedroom_blinds_saved_position
+        value: "{{ state_attr('cover.level_2','current_position') | int }}"
+set_default_blinds_position:
+  alias: Sets default value as saved blinds position
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kitchen_blinds_saved_position
+        value: "{{ states('input_number.kitchen_blinds_default_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kids_bedroom_blinds_saved_position
+        value: "{{ states('input_number.kids_bedroom_blinds_default_position') | int }}"
+set_morning_blinds_position:
+  alias: Sets default value as saved blinds position
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kitchen_blinds_saved_position
+        value: "{{ states('input_number.kitchen_blinds_morning_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kids_bedroom_blinds_saved_position
+        value: "{{ states('input_number.kids_bedroom_blinds_morning_position') | int }}"
+open_blinds:
+  alias: Open all blinds
+  sequence:
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.level
+        position: "{{ states('input_number.kitchen_blinds_saved_position') | int }}"
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.level_2
+        position: "{{ states('input_number.kids_bedroom_blinds_saved_position') | int }}"
+close_blinds:
+  alias: Close all blinds
+  sequence:
+    - service: cover.close_cover
+      data:
+        entity_id: cover.level
+    - service: cover.close_cover
+      data:
+        entity_id: cover.level_2
+close_blinds_if_windows_closed:
+  alias: Close all blinds if windows are closed. Asks users otherwise
+  sequence:
+    - event: close_blinds_request
+      event_data:
+        blinds_entity_id: cover.level
+        window_entity_id: binary_sensor.living_room_sensor_node_2_3
+    - event: close_blinds_request
+      event_data:
+        blinds_entity_id: cover.level_2
+        window_entity_id: binary_sensor.bedroom_2_sensor_node_3_2
+    
 tv_onoff:
   alias: TV on/off
   sequence:
