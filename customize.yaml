@@ -103,3 +103,6 @@ cover.level_2:
   friendly_name: Kids bedroom blinds
   device_class: window
   icon: mdi:blinds
+binary_sensor.door_window_sensor_158d000204856f:
+  friendly_name: Bedroom window
+  device_class: window

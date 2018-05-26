@@ -80,7 +80,7 @@ kids_bedroom:
 bedroom:
   name: Bedroom
   entities:
-    - binary_sensor.bedroom_sensor_node_4_2
+    - binary_sensor.door_window_sensor_158d000204856f
 garden:
   name: Garden
   entities:
