@@ -21,7 +21,7 @@ triggered_colour: 'red'
 ############# SENSOR GROUPS ########################
 # Sensors in this group tigger the alarm immediately
 immediate:
-  - binary_sensor.bedroom_2_sensor_node_3_2
+  - binary_sensor.door_window_sensor_158d000204b9bd
   - binary_sensor.living_room_sensor_node_2_2
   - binary_sensor.living_room_sensor_node_2_3
   - binary_sensor.living_room_sensor_node_2_4

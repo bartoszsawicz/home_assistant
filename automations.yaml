@@ -39,7 +39,7 @@
     for:
       seconds: 10
   action:
-    - service: script.close_blinds      
+    - service: script.close_blinds_if_windows_closed      
 #
 # Coming back home during day should restore blinds to stored position
 #
@@ -433,8 +433,8 @@
     - binary_sensor.living_room_sensor_node_2_2
     - binary_sensor.living_room_sensor_node_2_3
     - binary_sensor.living_room_sensor_node_2_4
-    - binary_sensor.bedroom_2_sensor_node_3_2
-    - binary_sensor.bedroom_sensor_node_4_2
+    - binary_sensor.door_window_sensor_158d000204b9bd
+    - binary_sensor.door_window_sensor_158d000204856f
     to: 'on'
     for:
       minutes: 20

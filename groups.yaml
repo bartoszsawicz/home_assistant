@@ -71,7 +71,7 @@ kids_bedroom:
   name: Kids bedroom
   entities:
     - cover.qubino_zmnhcdx_flush_shutter_level
-    - binary_sensor.bedroom_2_sensor_node_3_2
+    - binary_sensor.door_window_sensor_158d000204b9bd
     - sensor.bedroom_2_sensor_node_3_0
     - sensor.bedroom_2_sensor_node_3_1
     - switch.gateway_0_5
@@ -91,11 +91,13 @@ garden:
 windows:
   name: Windows
   entities:
+    - binary_sensor.door_window_sensor_158d000204b9bd
     - binary_sensor.bedroom_2_sensor_node_3_2
     - binary_sensor.living_room_sensor_node_2_2
     - binary_sensor.living_room_sensor_node_2_3
     - binary_sensor.living_room_sensor_node_2_4
     - binary_sensor.bedroom_sensor_node_4_2
+    - binary_sensor.door_window_sensor_158d000204856f
 tv:
   name: TV
   entities:
@@ -107,10 +109,10 @@ tv:
 useful_scripts:
   name: Scripts
   entities:
-    - script.turn_on_christmas_tree
-    - script.turn_off_christmas_tree
     - script.turn_on_terrace_lights
     - script.turn_off_terrace_lights
+    - script.close_blinds
+    - script.open_blinds
 settings:
   name: Settings
   view: yes

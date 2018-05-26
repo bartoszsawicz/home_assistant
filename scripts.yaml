@@ -61,7 +61,7 @@ close_blinds_if_windows_closed:
     - event: close_blinds_request
       event_data:
         blinds_entity_id: cover.qubino_zmnhcdx_flush_shutter_level
-        window_entity_id: binary_sensor.bedroom_2_sensor_node_3_2
+        window_entity_id: binary_sensor.door_window_sensor_158d000204b9bd
     
 tv_onoff:
   alias: TV on/off
