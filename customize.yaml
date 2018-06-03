@@ -109,3 +109,9 @@ binary_sensor.door_window_sensor_158d000204856f:
 binary_sensor.door_window_sensor_158d000204b9bd:
   friendly_name: Kids bedroom window
   device_class: window
+switch.sprinkler_12_1:
+  friendly_name: Sprinkler 1
+  icon: mdi:water
+switch.sprinkler_12_2:
+  friendly_name: Sprinkler 2
+  icon: mdi:water

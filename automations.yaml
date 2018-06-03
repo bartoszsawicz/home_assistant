@@ -222,32 +222,68 @@
       data_template:
         entity_id: input_number.kitchen_blinds_saved_position
         value: "{{ states('input_number.kitchen_blinds_default_position') | int }}"
+
 #
 # GARDEN sprinklers and lights
 #
-- id: turn_on_sprinkler1
-  alias: Turn on 1st sprinkler
-  initial_state: 'off'
+- id: turn_on_sprinkler1_in_the_morning
+  alias: Turn on 1st sprinkler in the morning
   trigger:
     platform: time
-    at: 01:00:00
+    at: 05:20:00
+  condition:
+    - condition: state
+      entity_id: input_boolean.should_water_garden
+      state: 'on'
+    - condition: time
+      weekday:
+        - mon
+        - wed
+        - fri
   action:
     service: homeassistant.turn_on
-    entity_id: switch.sprinkler_1_1
+    entity_id: switch.sprinkler_12_1
+- id: turn_on_sprinkler2_in_the_morning
+  alias: Turn on 2nd sprinkler in the morning
+  trigger:
+    platform: time
+    at: 05:40:00
+  condition:
+    - condition: state
+      entity_id: input_boolean.should_water_garden
+      state: 'on'
+    - condition: time
+      weekday:
+        - mon
+        - wed
+        - fri
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sprinkler_12_2
 - id: turn_off_sprinkler1
-  alias: Turn off 1st sprinkler after 5 minutes
-  initial_state: 'off'
+  alias: Turn off 1st sprinkler after 15 minutes
   trigger:
     platform: state
-    entity_id: switch.sprinkler_1_1
+    entity_id: switch.sprinkler_12_1
     from: 'off'
     to: 'on'
     for:
-      minutes: 5
+      minutes: 15
   action:
     service: homeassistant.turn_off
-    entity_id: switch.sprinkler_1_1
-
+    entity_id: switch.sprinkler_12_1
+- id: turn_off_sprinkler1
+  alias: Turn off 2nd sprinkler after 15 minutes
+  trigger:
+    platform: state
+    entity_id: switch.sprinkler_12_2
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 15
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.sprinkler_12_2
 - id: light_up_terrace_when_dark
   alias: Lit terrace up when dark
   trigger:
@@ -259,6 +295,40 @@
     value_template: "{{ not is_state('group.users', 'home') }}"
   action:
   - service: script.turn_on_terrace_lights
+- id: turn_off_garden_lights_in_late_evening
+  alias: Turn off garden lights late evening
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '+04:00:00'
+  action:
+  - service: script.turn_off_terrace_lights
+#
+# Helpers for watering garden
+#
+- id: always_turn_on_watering
+  alias: '[Helper] Set watering garden boolean to true before other automations'
+  trigger:
+    platform: time
+    at: '00:00:00'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.should_water_garden
+# - id: turn_off_watering_if_there_was_rain
+#   alias: '[Helper] Set watering garden boolean to false if it was raining lately'
+#   trigger:
+#     platform: time
+#     at: '04:00:00'
+#   condition:
+    
+#   action:
+#     - service: input_boolean.turn_off
+#       data:
+#         entity_id: input_boolean.should_water_garden
+
+
+
 - id: turn_off_garden_lights_in_late_evening
   alias: Turn off garden lights late evening
   trigger:
