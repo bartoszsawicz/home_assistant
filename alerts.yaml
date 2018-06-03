@@ -1,27 +1,27 @@
-noheartbeat_bedroom_2:
-  name: Kids Bedroom controller dead
-  done_message: Kids Bedroom controller back alive
-  entity_id: sensor.bedroom_2_controller_dead
-  state: True
-  repeat: 
-    - 10
-    - 30
-    - 30
-    - 120
-  notifiers:
-    discord_alert
-noheartbeat_bedroom:
-  name: Bedroom controller dead
-  done_message: Bedroom controller back alive
-  entity_id: sensor.bedroom_controller_dead
-  state: True
-  repeat:
-    - 10
-    - 30
-    - 30
-    - 120
-  notifiers:
-    discord_alert
+# noheartbeat_bedroom_2:
+#   name: Kids Bedroom controller dead
+#   done_message: Kids Bedroom controller back alive
+#   entity_id: sensor.bedroom_2_controller_dead
+#   state: True
+#   repeat: 
+#     - 10
+#     - 30
+#     - 30
+#     - 120
+#   notifiers:
+#     discord_alert
+# noheartbeat_bedroom:
+#   name: Bedroom controller dead
+#   done_message: Bedroom controller back alive
+#   entity_id: sensor.bedroom_controller_dead
+#   state: True
+#   repeat:
+#     - 10
+#     - 30
+#     - 30
+#     - 120
+#   notifiers:
+#     discord_alert
 noheartbeat_living_room:
   name: Living room controller dead
   done_message: Living room controller back alive
