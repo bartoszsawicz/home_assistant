@@ -80,6 +80,7 @@ sensor:
       - humidity
       - windSpeed
       - cloudiness
+      - precipitation
   - platform: time_date
     display_options:
       - 'date_time'
