@@ -154,3 +154,39 @@ sensor.philio_technology_corporation_pan081_in_wall_roller_shutter_controller_in
   name:
   platform: zwave
   unique_id: 4-72057594110050339
+cover.qubino_zmnhcdx_flush_shutter_switch:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126614528
+switch.qubino_zmnhcdx_flush_shutter_switch:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126614528
+cover.qubino_zmnhcdx_flush_shutter_level:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126630913
+sensor.qubino_zmnhcdx_flush_shutter_energy:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126827522
+sensor.qubino_zmnhcdx_flush_shutter_previous_reading:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126827538
+sensor.qubino_zmnhcdx_flush_shutter_power:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126827650
+binary_sensor.door_window_sensor_158d000204856f:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000204856f
+binary_sensor.door_window_sensor_158d000204b9bd:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000204b9bd
+binary_sensor.door_window_sensor_158d000204ba9f:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000204ba9f
