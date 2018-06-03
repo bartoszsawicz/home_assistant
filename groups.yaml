@@ -84,8 +84,8 @@ bedroom:
 garden:
   name: Garden
   entities:
-    - switch.sprinkler_1_1
-    - switch.sprinkler_1_2
+    - switch.sprinkler_12_1
+    - switch.sprinkler_12_2
     - switch.gateway_0_7
     - switch.gateway_0_8
 windows:
