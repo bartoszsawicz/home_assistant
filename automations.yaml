@@ -328,16 +328,6 @@
 #         entity_id: input_boolean.should_water_garden
 
 
-
-- id: turn_off_garden_lights_in_late_evening
-  alias: Turn off garden lights late evening
-  trigger:
-    platform: sun
-    event: sunset
-    offset: '+04:00:00'
-  action:
-  - service: script.turn_off_terrace_lights
-
 #
 # Alarm
 #

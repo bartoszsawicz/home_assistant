@@ -50,6 +50,7 @@ yr_weather:
     - sensor.yr_wind_speed
     - sensor.yr_cloudiness
     - sensor.yr_humidity
+    - sensor.yr_precipitation
 kitchen:
   name: Kitchen
   entities:
