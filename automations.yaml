@@ -232,14 +232,16 @@
     platform: time
     at: 05:20:00
   condition:
-    - condition: state
-      entity_id: input_boolean.should_water_garden
-      state: 'on'
-    - condition: time
-      weekday:
-        - mon
-        - wed
-        - fri
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.should_water_garden
+        state: 'on'
+      - condition: time
+        weekday:
+          - mon
+          - wed
+          - fri
   action:
     service: homeassistant.turn_on
     entity_id: switch.sprinkler_12_1
@@ -249,14 +251,16 @@
     platform: time
     at: 05:40:00
   condition:
-    - condition: state
-      entity_id: input_boolean.should_water_garden
-      state: 'on'
-    - condition: time
-      weekday:
-        - mon
-        - wed
-        - fri
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.should_water_garden
+        state: 'on'
+      - condition: time
+        weekday:
+          - mon
+          - wed
+          - fri
   action:
     service: homeassistant.turn_on
     entity_id: switch.sprinkler_12_2
