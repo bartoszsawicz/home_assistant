@@ -62,7 +62,7 @@ living_room:
     - binary_sensor.living_room_sensor_node_2_4
     - climate.living_room1
     - switch.switch_2
-    - light.living_room
+    - light.yeelight_rgb_34ce008fd82f
     - vacuum.xiaomi_vacuum_cleaner
     - binary_sensor.motion_sensor_158d0001e08b44
     - sensor.illumination_158d0001e08b44

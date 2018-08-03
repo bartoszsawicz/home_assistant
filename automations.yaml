@@ -428,7 +428,7 @@
     data:
       entity_id: alarm_control_panel.house
       code: 5464
-- id: blink_garden1_light_when_alarm_triggered
+- id: blink_lights_when_alarm_triggered
   alias: Blink Garden Terrace Light When Alarm Triggered
   condition:
     condition: state
@@ -444,6 +444,9 @@
   - service: switch.toggle
     data:
       entity_id: switch.gateway_0_8
+  - service: light.toggle
+    data:
+      entity_id: light.yeelight_rgb_34ce008fd82f
 - id: tv_speak_when_alarm_triggered
   alias: Say warning through tv box when alarm triggered
   condition:
