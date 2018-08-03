@@ -21,12 +21,14 @@ triggered_colour: 'red'
 ############# SENSOR GROUPS ########################
 # Sensors in this group tigger the alarm immediately
 immediate:
-  - binary_sensor.door_window_sensor_158d000204b9bd
   - binary_sensor.living_room_sensor_node_2_2
   - binary_sensor.living_room_sensor_node_2_3
   - binary_sensor.living_room_sensor_node_2_4
+  - binary_sensor.door_window_sensor_158d000204b9bd    
   - binary_sensor.door_window_sensor_158d000204856f
   - binary_sensor.door_window_sensor_158d000204ba9f
+  - binary_sensor.door_window_sensor_158d000205b8e6
+  - binary_sensor.door_window_sensor_158d0002048419
 
 # Sensors in this group start the clock (pending_time) when tripped before the alarm is activated in 'Away' mode
 delayed:
