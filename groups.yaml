@@ -86,7 +86,7 @@ garden:
     - switch.sprinkler_12_1
     - switch.sprinkler_12_2
     - switch.gateway_0_7
-    - switch.gateway_0_8
+    - switch.gateway_0_6
 windows:
   name: Windows
   entities:
