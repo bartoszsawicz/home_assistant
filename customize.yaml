@@ -80,14 +80,6 @@ cover.level:
   friendly_name: Kitchen blinds
   device_class: window
   icon: mdi:blinds
-script.tv_onoff:
-  icon: mdi:television
-script.tv_off:
-  icon: mdi:television-off
-script.tv_volume_up:
-  icon: mdi:volume-plus
-script.tv_volume_down:
-  icon: mdi:volume-minus
 vacuum.xiaomi_vacuum_cleaner:
   icon: mdi:robot-vacuum-variant
 sensor.illumination_158d0001e08b44:
