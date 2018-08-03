@@ -465,9 +465,6 @@
       message: 'Alarm aktywowany! Właściciele zostali powiadomieni'
       language: 'pl'
       entity_id: media_player.mibox3
-  - service: switch.toggle
-    data:
-      entity_id: switch.gateway_0_8
       
 - id: cleanup_after_triggered_alarm_timeouts
   alias: Garden lights on after triggered alarm timeouts

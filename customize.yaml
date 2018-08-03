@@ -108,7 +108,7 @@ binary_sensor.door_window_sensor_158d000204ba9f:
   friendly_name: Living room garden window
   device_class: window
 binary_sensor.door_window_sensor_158d000205b8e6:
-  friendly_name: Living room kitchen window
+  friendly_name: Kitchen window
   device_class: window
 binary_sensor.door_window_sensor_158d0002048419:
   friendly_name: Living room terrace window
