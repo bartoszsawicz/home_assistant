@@ -8,12 +8,12 @@ sensor.living_room_sensor_node_2_1:
   friendly_name: Living room temperature
 binary_sensor.living_room_sensor_node_2_3:
   device_class: window
-  friendly_name: Kitchen window
+  friendly_name: Kitchen window (Arduino)
 binary_sensor.living_room_sensor_node_2_2:
-  friendly_name: Living room terrace window
+  friendly_name: Living room terrace window (Arduino)
   device_class: window
 binary_sensor.living_room_sensor_node_2_4:
-  friendly_name: Living room garden window
+  friendly_name: Living room garden window (Arduino)
   device_class: window
 binary_sensor.bedroom_2_sensor_node_3_2:
   friendly_name: Kids bedroom window
@@ -53,9 +53,6 @@ switch.sprinkler_1_2:
 binary_sensor.bedroom_sensor_node_4_99:
   friendly_name: Bedroom heartbeat
   hidden: true
-binary_sensor.bedroom_sensor_node_4_2:
-  friendly_name: Bedroom window
-  device_class: window
 switch.gateway_0_5:
   friendly_name: Kids bedroom ceiling light
 switch.gateway_0_6:
@@ -109,6 +106,9 @@ binary_sensor.door_window_sensor_158d000204856f:
 binary_sensor.door_window_sensor_158d000204b9bd:
   friendly_name: Kids bedroom window
   device_class: window
+binary_sensor.door_window_sensor_158d000204ba9f:
+  friendly_name: Living room garden window
+  device_class: window  
 switch.sprinkler_12_1:
   friendly_name: Sprinkler 1
   icon: mdi:water
