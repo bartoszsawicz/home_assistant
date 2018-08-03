@@ -146,6 +146,23 @@ tv_pc_source:
         packet:
           # Enter
           - "JgDSAJOTEjcTNxI4EhMSExITEhMTEhM3FTUSOBITEhMSExITEhMSExQRExMSNxITEzcSOBITEjgSOBI3EhMTNxITEhMTNxIABfOTkhI4EjgSOBITEhMSExITEhMSOBI4EjcTExITEhMSExITEhMSExITEjgSExI4EjgSExI4EjcSOBITEjgSExITEjgSAAXzkpMSOBI4EjcTEhMTEhMSExITEjgSNxM3EhMSExMSExMSExITEhMSExI4EhMSOBI3ExMSNxI4EjgUERI4EhMSExI4EgANBQAAAAAAAA=="   
+trigger_alarm_lights:
+  alias: Toggle alarm lights tick
+  sequence:
+    - service: light.toggle
+      data:
+        entity_id: light.yeelight_rgb_34ce008fd82f  
+    - service: switch.toggle
+      data:
+        entity_id: switch.gateway_0_7
+    - delay: 00:00:01        
+    - service: switch.toggle
+      data:
+        entity_id: switch.gateway_0_6
+    - delay: 00:00:01        
+    - service: switch.toggle
+      data:
+        entity_id: switch.gateway_0_5      
 turn_on_terrace_lights:
   alias: Turn on terrace lights
   sequence:

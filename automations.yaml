@@ -436,20 +436,9 @@
     state: triggered
   trigger:
     platform: time
-    seconds: /2
+    seconds: /4
   action:
-  - service: switch.toggle
-    data:
-      entity_id: switch.gateway_0_7
-  - service: switch.toggle
-    data:
-      entity_id: switch.gateway_0_6
-  - service: switch.toggle
-    data:
-      entity_id: switch.gateway_0_5      
-  - service: light.toggle
-    data:
-      entity_id: light.yeelight_rgb_34ce008fd82f
+    - service: script.trigger_alarm_lights 
 - id: tv_speak_when_alarm_triggered
   alias: Say warning through tv box when alarm triggered
   condition:
