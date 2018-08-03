@@ -29,10 +29,7 @@ security:
   view: yes
   entities:
     - group.windows
-    - binary_sensor.living_room_camera_motion_detection
-    - alert.noheartbeat_bedroom_2
-    - alert.noheartbeat_bedroom
-    - alert.noheartbeat_living_room
+    - group.security_sensors
 twigg: 
   entities:
     - device_tracker.galaxy_s8
@@ -65,6 +62,7 @@ living_room:
     - binary_sensor.living_room_sensor_node_2_4
     - climate.living_room1
     - switch.switch_2
+    - light.living_room
     - vacuum.xiaomi_vacuum_cleaner
     - binary_sensor.motion_sensor_158d0001e08b44
     - sensor.illumination_158d0001e08b44
@@ -100,6 +98,14 @@ windows:
     - binary_sensor.door_window_sensor_158d000204ba9f
     - binary_sensor.door_window_sensor_158d000205b8e6
     - binary_sensor.door_window_sensor_158d0002048419
+security_sensors:
+  name: Security sensors
+  entities:
+    - binary_sensor.door_window_sensor_158d000205b759
+    - binary_sensor.living_room_camera_motion_detection
+    - alert.noheartbeat_bedroom_2
+    - alert.noheartbeat_bedroom
+    - alert.noheartbeat_living_room
 tv:
   name: TV
   entities:

@@ -494,9 +494,6 @@
   trigger:
     platform: state
     entity_id:
-    - binary_sensor.living_room_sensor_node_2_2
-    - binary_sensor.living_room_sensor_node_2_3
-    - binary_sensor.living_room_sensor_node_2_4
     - binary_sensor.door_window_sensor_158d000204b9bd    
     - binary_sensor.door_window_sensor_158d000204856f
     - binary_sensor.door_window_sensor_158d000204ba9f
