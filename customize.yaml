@@ -108,7 +108,7 @@ binary_sensor.door_window_sensor_158d000204b9bd:
   device_class: window
 binary_sensor.door_window_sensor_158d000204ba9f:
   friendly_name: Living room garden window
-  device_class: window  
+  device_class: window
 switch.sprinkler_12_1:
   friendly_name: Sprinkler 1
   icon: mdi:water
