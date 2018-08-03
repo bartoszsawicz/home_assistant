@@ -454,7 +454,6 @@
       message: 'Alarm aktywowany! Właściciele zostali powiadomieni'
       language: 'pl'
       entity_id: media_player.mibox3
-      
 - id: cleanup_after_triggered_alarm_timeouts
   alias: Garden lights on after triggered alarm timeouts
   trigger:
@@ -473,7 +472,6 @@
     to: disarmed
   action:
   - service: script.turn_off_terrace_lights
-
 #
 # Warnings, notifications
 #
