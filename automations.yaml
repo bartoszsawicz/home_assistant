@@ -387,6 +387,11 @@
       message: ALARM TRIGGERED!!! {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][
         states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name
         }}
+  - service: notify.push
+    data:
+      message: ALARM TRIGGERED!!! {{ states[states.alarm_control_panel.house.attributes.changed_by.split(".")[0]][
+        states.alarm_control_panel.house.attributes.changed_by.split(".")[1]].name
+        }}
 - id: alarm_warning
   alias: '[Alarm] Warning'
   trigger:

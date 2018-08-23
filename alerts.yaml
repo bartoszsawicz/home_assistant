@@ -22,22 +22,23 @@
 #     - 120
 #   notifiers:
 #     discord_alert
-noheartbeat_living_room:
-  name: Living room controller dead
-  done_message: Living room controller back alive
-  entity_id: sensor.living_room_controller_dead
-  state: True
-  repeat:
-    - 10
-    - 30
-    - 30
-    - 120
-  notifiers:
-    discord_alert
+# noheartbeat_living_room:
+#   name: Living room controller dead
+#   done_message: Living room controller back alive
+#   entity_id: sensor.living_room_controller_dead
+#   state: True
+#   repeat:
+#     - 10
+#     - 30
+#     - 30
+#     - 120
+#   notifiers:
+#     discord_alert
 alarm_triggered:
   name: Alarm triggered!
   entity_id: alarm_control_panel.house
   state: 'triggered'
   repeat: 1
   notifiers:
-    discord_alert
+    - discord_alert
+    - push
