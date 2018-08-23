@@ -190,3 +190,19 @@ binary_sensor.door_window_sensor_158d000204ba9f:
   name:
   platform: xiaomi_aqara
   unique_id: status158d000204ba9f
+sensor.qubino_zmnhcdx_flush_shutter_previous_reading_2:
+  name:
+  platform: zwave
+  unique_id: 5-72057594126827666
+binary_sensor.door_window_sensor_158d000205b8e6:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000205b8e6
+binary_sensor.door_window_sensor_158d0002048419:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0002048419
+binary_sensor.door_window_sensor_158d000205b759:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000205b759
