@@ -126,3 +126,6 @@ debug:
   entities:
     - input_number.kitchen_blinds_saved_position
     - input_number.kids_bedroom_blinds_saved_position
+    - input_boolean.blinds_can_be_opened_users
+    - input_boolean.blinds_can_be_opened_time
+    - input_boolean.should_water_garden

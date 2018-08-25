@@ -83,7 +83,7 @@ cover.level:
 vacuum.xiaomi_vacuum_cleaner:
   icon: mdi:robot-vacuum-variant
 sensor.illumination_158d0001e08b44:
-  friendly_name: Living house sensor.illumination
+  friendly_name: Living room illumination
 sensor.illumination_158d00022518f0:
   friendly_name: Kids bedroom illumination
 cover.qubino_zmnhcdx_flush_shutter_level:
