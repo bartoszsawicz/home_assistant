@@ -136,6 +136,10 @@ device_tracker:
   - platform: bluetooth_tracker
     new_device_defaults:
       track_new_devices: False
+  - platform: bluetooth_le_tracker
+    new_device_defaults:
+      track_new_devices: True
+
 mqtt:
   broker: 127.0.0.1
   port: 8125
