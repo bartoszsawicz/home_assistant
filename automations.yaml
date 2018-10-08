@@ -420,14 +420,15 @@
   - service: alarm_control_panel.alarm_arm_away
 - id: disarm_alarm_when_user_comes_home
   alias: '[Alarm] Auto disarm'
-  condition: or
-  conditions:
-    - condition: state      # This condition is so this rule doesn't spam logbook during day
-      entity_id: alarm_control_panel.house
-      state: armed_away
-    - condition: state  
-      entity_id: alarm_control_panel.house
-      state: warning
+  condition:
+    condition: or
+    conditions:
+      - condition: state      # This condition is so this rule doesn't spam logbook during day
+        entity_id: alarm_control_panel.house
+        state: armed_away
+      - condition: state  
+        entity_id: alarm_control_panel.house
+        state: warning
   trigger:
     platform: state
     entity_id: group.users
