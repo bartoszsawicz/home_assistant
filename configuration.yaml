@@ -138,7 +138,7 @@ device_tracker:
   - platform: google_maps
     username: !secret google_user
     password: !secret google_password
-
+map:
 mqtt:
   broker: 127.0.0.1
   port: 8125
