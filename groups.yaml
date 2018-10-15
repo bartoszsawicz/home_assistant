@@ -57,6 +57,8 @@ living_room:
   entities:
     - binary_sensor.door_window_sensor_158d0002048419
     - binary_sensor.door_window_sensor_158d000204ba9f
+    - sensor.temperature_158d0002391b18
+    - sensor.humidity_158d0002391b18
     - climate.living_room1
     - switch.switch_2
     - light.yeelight_rgb_34ce008fd82f
@@ -68,6 +70,8 @@ kids_bedroom:
   entities:
     - cover.qubino_zmnhcdx_flush_shutter_level
     - binary_sensor.door_window_sensor_158d000204b9bd
+    - sensor.temperature_158d000237d944
+    - sensor.humidity_158d000237d944
     - switch.gateway_0_5
     - binary_sensor.motion_sensor_158d00022518f0    
     - sensor.illumination_158d00022518f0
@@ -85,9 +89,6 @@ garden:
 windows:
   name: Windows
   entities:
-    - binary_sensor.living_room_sensor_node_2_2
-    - binary_sensor.living_room_sensor_node_2_3
-    - binary_sensor.living_room_sensor_node_2_4
     - binary_sensor.door_window_sensor_158d000204b9bd    
     - binary_sensor.door_window_sensor_158d000204856f
     - binary_sensor.door_window_sensor_158d000204ba9f
@@ -98,9 +99,6 @@ security_sensors:
   entities:
     - binary_sensor.door_window_sensor_158d000205b759
     - binary_sensor.living_room_camera_motion_detection
-    - alert.noheartbeat_bedroom_2
-    - alert.noheartbeat_bedroom
-    - alert.noheartbeat_living_room
 useful_scripts:
   name: Scripts
   entities:
