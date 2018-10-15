@@ -138,6 +138,7 @@ device_tracker:
   - platform: google_maps
     username: !secret google_user
     password: !secret google_password
+    max_gps_accuracy: 100m
 map:
 mqtt:
   broker: 127.0.0.1
