@@ -132,13 +132,13 @@ device_tracker:
   - platform: bluetooth_tracker
     new_device_defaults:
       track_new_devices: False
-  - platform: bluetooth_le_tracker
-    new_device_defaults:
-      track_new_devices: True
+      #  - platform: bluetooth_le_tracker
+      #new_device_defaults:
+      #track_new_devices: True
   - platform: google_maps
     username: !secret google_user
     password: !secret google_password
-    max_gps_accuracy: 100m
+    max_gps_accuracy: 100
 map:
 mqtt:
   broker: 127.0.0.1
