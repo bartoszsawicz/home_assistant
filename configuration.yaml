@@ -23,8 +23,6 @@ frontend:
 config:
 
 http:
-  # Uncomment this to add a password (recommended!)
-  api_password: !secret http_password
   # Uncomment this if you are using SSL or running in Docker etc
   # base_url: example.duckdns.org:8123
   server_port: 8080
@@ -130,15 +128,16 @@ zone: !include zones.yaml
 
 device_tracker:
   - platform: bluetooth_tracker
-    new_device_defaults:
-      track_new_devices: False
-      #  - platform: bluetooth_le_tracker
-      #new_device_defaults:
-      #track_new_devices: True
-  - platform: google_maps
-    username: !secret google_user
-    password: !secret google_password
-    max_gps_accuracy: 100
+  - platform: nmap_tracker
+    home_interval: 10
+    hosts:
+      - 192.168.0.101
+      - 192.168.0.102
+      - 192.168.0.103
+    #- platform: google_maps
+    #username: !secret google_user
+    #password: !secret google_password
+    #max_gps_accuracy: 100
 map:
 mqtt:
   broker: 127.0.0.1
@@ -174,7 +173,8 @@ notify:
 logger:
   default: warn
   logs:
-    custom_components.alarm_control_panel.bwalarm: info
+    custom_components.alarm_control_panel.bwalarm: warn
+
 
 switch:
   - platform: broadlink
