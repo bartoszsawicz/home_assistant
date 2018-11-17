@@ -82,6 +82,8 @@ bedroom:
   name: Bedroom
   entities:
     - binary_sensor.door_window_sensor_158d000204856f
+    - sensor.temperature_158d00027724a9
+    - sensor.humidity_158d00027724a9
 garden:
   name: Garden
   entities:

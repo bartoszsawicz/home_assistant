@@ -123,3 +123,7 @@ sensor.temperature_158d000237d944:
   friendly_name: Kids bedroom temperature
 sensor.humidity_158d000237d944:
   friendly_name: Kids bedroom humidity
+sensor.temperature_158d00027724a9:
+  friendly_name: Bedroom temperature
+sensor.humidity_158d00027724a9:
+  friendly_name: Bedroom humidity
