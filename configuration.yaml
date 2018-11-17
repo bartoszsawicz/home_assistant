@@ -175,13 +175,6 @@ logger:
   logs:
     custom_components.alarm_control_panel.bwalarm: warn
 
-
-switch:
-  - platform: broadlink
-    host: 192.168.0.110
-    mac: 'b4:43:0d:f9:1a:32'
-    friendly_name: 'Broadlink IR controller'
-    type: rm_mini
     
 script: !include scripts.yaml
 
@@ -205,29 +198,29 @@ xiaomi_aqara:
 zwave:
   usb_path: /dev/zwave
 
-google_assistant:
-  project_id: home-assistant-201418
-  client_id: !secret google_assistant_client_id
-  access_token: !secret google_assistant_access_token
-  api_key: !secret google_assistant_api_key
-  expose_by_default: false
-  entity_config:
-    cover.level:
-      name: Kitchen blinds
-      expose: true
-      room: Kitchen
-    switch.switch_2:
-      name: Sofa lamp
-      expose: true
-      room: Living room
-      aliases:
-        - sofa light
-    light.gateway_light_7811dc6c9735:
-      name: Gateway light
-      expose: true
-      room: Living room
-      aliases:
-        - xiaomi light
+#google_assistant:
+#  project_id: home-assistant-201418
+#  client_id: !secret google_assistant_client_id
+#  access_token: !secret google_assistant_access_token
+#  api_key: !secret google_assistant_api_key
+#  expose_by_default: false
+#  entity_config:
+#    cover.level:
+#      name: Kitchen blinds
+#      expose: true
+#      room: Kitchen
+#    switch.switch_2:
+#      name: Sofa lamp
+#      expose: true
+#      room: Living room
+#      aliases:
+#        - sofa light
+#    light.gateway_light_7811dc6c9735:
+#      name: Gateway light
+#      expose: true
+#      room: Living room
+#      aliases:
+#        - xiaomi light
 input_number: !include input_numbers.yaml
 input_boolean: !include input_booleans.yaml
 input_select: !include input_selects.yaml
