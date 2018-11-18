@@ -7,6 +7,7 @@ default_view:
     - group.living_room
     - group.kids_bedroom
     - group.bedroom
+    - group.bathroom
     - group.garden
     - group.useful_scripts
 users:
@@ -93,6 +94,11 @@ garden:
     - switch.sprinkler_12_2
     - switch.gateway_0_7
     - switch.gateway_0_6
+bathroom:
+  name: bathroom
+  entities:
+    - sensor.temperature_158d0002389cd6
+    - sensor.humidity_158d0002389cd6
 windows:
   name: Windows
   entities:
