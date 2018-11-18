@@ -87,6 +87,8 @@ bedroom:
 garden:
   name: Garden
   entities:
+    - sensor.temperature_158d000273cfe6
+    - sensor.humidity_158d000273cfe6
     - switch.sprinkler_12_1
     - switch.sprinkler_12_2
     - switch.gateway_0_7

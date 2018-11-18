@@ -127,6 +127,10 @@ sensor.temperature_158d00027724a9:
   friendly_name: Bedroom temperature
 sensor.humidity_158d00027724a9:
   friendly_name: Bedroom humidity
+sensor.temperature_158d000273cfe6:
+  friendly_name: Garden temperature
+sensor.humidity_158d000273cfe6:
+  friendly_name: Garden humidity
 device_tracker.30074d70ffc9:
   friendly_name: Twigg S8 WiFi
 device_tracker.ecd09f1f2858:
