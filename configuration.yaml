@@ -186,6 +186,18 @@ light:
         transition: 1000
 #        use_music_mode: True #(defaults to False)
 #        save_on_change: False #(defaults to True)
+  - platform: mqtt
+    name: "sonoff_kids_ceiling_light"
+    state_topic: "stat/sonoff_kids_light/POWER2"
+    command_topic: "cmnd/sonoff_kids_light/POWER2"
+    availability_topic: "tele/sonoff_kids_light/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+
 
 climate:
   - platform: eq3btsmart
@@ -228,3 +240,4 @@ vacuum:
   - platform: xiaomi_miio
     host: 192.168.0.116
     token: !secret roborock_token
+

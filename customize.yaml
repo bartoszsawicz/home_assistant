@@ -1,38 +1,9 @@
-binary_sensor.living_room_sensor_node_2_99:
-  friendly_name: Living room heartbeat
-  hidden: true
-sensor.living_room_sensor_node_2_0:
-  friendly_name: Living room humidity
-  hidden: true
-sensor.living_room_sensor_node_2_1:
-  friendly_name: Living room temperature
-binary_sensor.living_room_sensor_node_2_3:
-  device_class: window
-  friendly_name: Kitchen window (Arduino)
-binary_sensor.living_room_sensor_node_2_2:
-  friendly_name: Living room terrace window (Arduino)
-  device_class: window
-binary_sensor.living_room_sensor_node_2_4:
-  friendly_name: Living room garden window (Arduino)
-  device_class: window
-binary_sensor.bedroom_2_sensor_node_3_2:
-  friendly_name: Kids bedroom window
-  device_class: window
-binary_sensor.bedroom_2_sensor_node_3_99:
-  friendly_name: Kids bedroom heartbeat
-  hidden: true
-sensor.bedroom_2_sensor_node_3_0:
-  friendly_name: Kids bedroom humidity
-  hidden: 'true'
-sensor.bedroom_2_sensor_node_3_1:
-  friendly_name: Kids bedroom temperature
 group.all_automations:
   hidden: false
 group.all_devices:
   hidden: false
 group.all_switches:
   hidden: false
-group.users: {}
 sun.sun:
   hidden: true
 sensor.yr_cloudiness:
@@ -50,10 +21,7 @@ switch.sprinkler_1_1:
   friendly_name: Northern sprinkler
 switch.sprinkler_1_2:
   friendly_name: Western sprinkler
-binary_sensor.bedroom_sensor_node_4_99:
-  friendly_name: Bedroom heartbeat
-  hidden: true
-switch.gateway_0_5:
+light.sonoff_kids_ceiling_light:
   friendly_name: Kids bedroom ceiling light
   icon: mdi:lightbulb
 switch.gateway_0_7:
@@ -64,7 +32,6 @@ switch.gateway_0_6:
   icon: mdi:track-light
 switch.gateway_0_9:
   friendly_name: Alarm siren
-alert.noheartbeat_bedroom_2: {}
 climate.living_room1:
   friendly_name: Living room large radiator
 binary_sensor.motion_sensor_158d00022518f0:
