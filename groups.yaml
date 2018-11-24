@@ -76,7 +76,7 @@ kids_bedroom:
     - binary_sensor.door_window_sensor_158d000204b9bd
     - sensor.temperature_158d000237d944
     - sensor.humidity_158d000237d944
-    - switch.gateway_0_5
+    - light.sonoff_kids_ceiling_light
     - binary_sensor.motion_sensor_158d00022518f0    
     - sensor.illumination_158d00022518f0
 bedroom:
@@ -111,7 +111,8 @@ security_sensors:
   name: Security sensors
   entities:
     - binary_sensor.door_window_sensor_158d000205b759
-    - binary_sensor.living_room_camera_motion_detection
+    - binary_sensor.motion_sensor_158d0001e08b44
+    - binary_sensor.motion_sensor_158d00022518f0
 useful_scripts:
   name: Scripts
   entities:
