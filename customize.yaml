@@ -10,7 +10,6 @@ sensor.yr_cloudiness:
   friendly_name: Cloudiness
 sensor.yr_humidity:
   friendly_name: Humidity
-  hidden: true
 sensor.yr_symbol:
   friendly_name: Symbol
 sensor.yr_temperature:

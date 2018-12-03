@@ -68,6 +68,9 @@ trigger_alarm_lights:
     - service: light.toggle
       data:
         entity_id: light.yeelight_rgb_34ce008fd82f  
+    - service: light.toggle
+      data:
+        entity_id: light.sonoff_kids_ceiling_light
     - service: switch.toggle
       data:
         entity_id: switch.gateway_0_7
@@ -75,10 +78,6 @@ trigger_alarm_lights:
     - service: switch.toggle
       data:
         entity_id: switch.gateway_0_6
-    - delay: 00:00:01        
-    - service: switch.toggle
-      data:
-        entity_id: switch.gateway_0_5      
 turn_on_terrace_lights:
   alias: Turn on terrace lights
   sequence:
