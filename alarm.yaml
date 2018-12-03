@@ -11,3 +11,52 @@
 
 platform: bwalarm
 name: House
+panel:
+  cameras: []
+  enable_sensors_panel: true
+states:
+  armed_home:
+    override: []
+    warning_time: '60'
+    delayed: []
+    pending_time: 0
+    immediate:
+    - binary_sensor.door_window_sensor_158d0002048419
+    - binary_sensor.door_window_sensor_158d000204856f
+    - binary_sensor.door_window_sensor_158d000204b9bd
+    - binary_sensor.door_window_sensor_158d000204ba9f
+    - binary_sensor.door_window_sensor_158d000205b759
+    - binary_sensor.door_window_sensor_158d000205b8e6
+    trigger_time: 600
+  armed_away:
+    override: []
+    warning_time: '60'
+    delayed:
+    - binary_sensor.motion_sensor_158d0001e08b44
+    - binary_sensor.motion_sensor_158d00022518f0
+    pending_time: '90'
+    immediate:
+    - binary_sensor.door_window_sensor_158d0002048419
+    - binary_sensor.door_window_sensor_158d000204856f
+    - binary_sensor.door_window_sensor_158d000204b9bd
+    - binary_sensor.door_window_sensor_158d000204ba9f
+    - binary_sensor.door_window_sensor_158d000205b759
+    - binary_sensor.door_window_sensor_158d000205b8e6
+    trigger_time: 600
+  armed_perimeter:
+    override: []
+    warning_time: 0
+    delayed: []
+    pending_time: 0
+    immediate: []
+    trigger_time: 600
+users:
+- name: Twiggy
+  enabled: false
+  picture: /local/images/ha.png
+  code: 004d8a4c1b264d35894be1253cc12946
+  id: 004d8a4c1b264d35894be1253cc12946
+enable_persistence: true
+code: !secret alarm_code
+passcode_attempts: '100'
+admin_password: !secret alarm_admin_pass
