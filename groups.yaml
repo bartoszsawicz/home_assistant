@@ -40,7 +40,7 @@ gburek:
     - device_tracker.ecd09f1f2858
 matixy: 
   entities:
-    - device_tracker.google_maps_101907626605043878038
+    - device_tracker.`google_maps_101907626605043878038
     - device_tracker.44d4e0cc9b3b
 yr_weather:
   name: Yr
@@ -116,6 +116,7 @@ security_sensors:
 useful_scripts:
   name: Scripts
   entities:
+    - script.vacuum_hallway
     - script.turn_on_terrace_lights
     - script.turn_off_terrace_lights
     - script.close_blinds
