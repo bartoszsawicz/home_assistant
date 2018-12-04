@@ -5,7 +5,7 @@ vacuum_hallway:
       data: 
         entity_id: "vacuum.xiaomi_vacuum_cleaner"
         command: "app_zoned_clean"
-        params: [[25500, 32000, 29000, 34500 , 2]]
+        params: [[25800, 32800, 29000, 34500 , 2]]
 store_blinds_state:
   alias: Save blinds current position so it can be used when they're reopened
   sequence:
