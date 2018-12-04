@@ -32,15 +32,15 @@ security:
     - group.security_sensors
 twigg: 
   entities:
-    - device_tracker.galaxy_s8
+    - device_tracker.google_maps_102528977950832312966
     - device_tracker.30074d70ffc9
 gburek: 
   entities:
-    - device_tracker.redmi
+    - google_maps_108032074478922062341
     - device_tracker.ecd09f1f2858
 matixy: 
   entities:
-    - device_tracker.xperia_z2
+    - google_maps_101907626605043878038
     - device_tracker.44d4e0cc9b3b
 yr_weather:
   name: Yr
