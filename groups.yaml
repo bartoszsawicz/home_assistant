@@ -59,6 +59,7 @@ kitchen:
 living_room:
   name: Living room
   entities:
+    - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level
     - binary_sensor.door_window_sensor_158d0002048419
     - binary_sensor.door_window_sensor_158d000204ba9f
     - sensor.temperature_158d0002391b18
@@ -134,11 +135,14 @@ blinds_params:
     - input_number.kitchen_blinds_morning_position
     - input_number.kids_bedroom_blinds_default_position
     - input_number.kids_bedroom_blinds_morning_position
+    - input_number.living_room_garden_blinds_default_position
+    - input_number.living_room_garden_blinds_morning_position
 debug:
   name: Debug
   entities:
     - input_number.kitchen_blinds_saved_position
     - input_number.kids_bedroom_blinds_saved_position
+    - input_number.living_room_garden_blinds_saved_position
     - input_boolean.blinds_can_be_opened_users
     - input_boolean.blinds_can_be_opened_time
     - input_boolean.should_water_garden

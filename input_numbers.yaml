@@ -20,21 +20,42 @@ kitchen_blinds_saved_position:
   step: 5
   unit_of_measurement: '%'
 kids_bedroom_blinds_morning_position:
-  name: Kitchen Blinds Morning Position
+  name: Kids Bedroom Blinds Morning Position
   initial: 100
   min: 0
   max: 100
   step: 5
   unit_of_measurement: '%'
 kids_bedroom_blinds_default_position:
-  name: Kitchen Blinds Default Position
+  name: Kids Bedroom Blinds Default Position
   initial: 100
   min: 0
   max: 100
   step: 5
   unit_of_measurement: '%'
 kids_bedroom_blinds_saved_position:
-  name: Kitchen Blinds Saved Position
+  name: Kids Bedroom Blinds Saved Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+living_room_garden_blinds_morning_position:
+  name: Living Room Garden Blinds Morning Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+living_room_garden_blinds_default_position:
+  name: Living Room Garden Blinds Default Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+living_room_garden_blinds_saved_position:
+  name: Living Room Garden Blinds Saved Position
   initial: 100
   min: 0
   max: 100
