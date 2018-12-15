@@ -115,3 +115,7 @@ cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2:
   friendly_name: Bedroom blinds
   device_class: window
   icon: mdi:blinds
+cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3:
+  friendly_name: Living room terrace blinds
+  device_class: window
+  icon: mdi:blinds

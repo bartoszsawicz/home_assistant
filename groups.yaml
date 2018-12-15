@@ -60,6 +60,7 @@ living_room:
   name: Living room
   entities:
     - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level
+    - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
     - binary_sensor.door_window_sensor_158d0002048419
     - binary_sensor.door_window_sensor_158d000204ba9f
     - sensor.temperature_158d0002391b18
