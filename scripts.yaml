@@ -19,8 +19,16 @@ store_blinds_state:
         value: "{{ state_attr('cover.qubino_zmnhcdx_flush_shutter_level','current_position') | int }}"
     - service: input_number.set_value
       data_template:
+        entity_id: input_number.bedroom_blinds_saved_position
+        value: "{{ state_attr('cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2','current_position') | int }}"
+    - service: input_number.set_value
+      data_template:
         entity_id: input_number.living_room_garden_blinds_saved_position
         value: "{{ state_attr('cover.fibaro_system_fgrm222_roller_shutter_controller_2_level','current_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.living_room_terrace_blinds_saved_position
+        value: "{{ state_attr('cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3','current_position') | int }}"
 set_default_blinds_position:
   alias: Sets default value as saved blinds position
   sequence:
@@ -66,6 +74,14 @@ open_blinds:
       data_template:
         entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level
         position: "{{ states('input_number.living_room_garden_blinds_saved_position') | int }}"
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
+        position: "{{ states('input_number.living_room_terrace_blinds_saved_position') | int }}"
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2
+        position: "{{ states('input_number.bedroom_blinds_saved_position') | int }}"
 close_blinds:
   alias: Close all blinds
   sequence:
@@ -78,6 +94,12 @@ close_blinds:
     - service: cover.close_cover
       data:
         entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level
+    - service: cover.close_cover
+      data:
+        entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
+    - service: cover.close_cover
+      data:
+        entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2
 close_blinds_if_windows_closed:
   alias: Close all blinds if windows are closed. Asks users otherwise
   sequence:
@@ -93,6 +115,14 @@ close_blinds_if_windows_closed:
       event_data:
         blinds_entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level
         window_entity_id: binary_sensor.door_window_sensor_158d000204ba9f    
+    - event: close_blinds_request
+      event_data:
+        blinds_entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2
+        window_entity_id: binary_sensor.door_window_sensor_158d000204856f
+    - event: close_blinds_request
+      event_data:
+        blinds_entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
+        window_entity_id: binary_sensor.door_window_sensor_158d0002048419    
 trigger_alarm_lights:
   alias: Toggle alarm lights tick
   sequence:

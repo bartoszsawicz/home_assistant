@@ -40,6 +40,27 @@ kids_bedroom_blinds_saved_position:
   max: 100
   step: 5
   unit_of_measurement: '%'
+bedroom_blinds_morning_position:
+  name: Bedroom Blinds Morning Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+bedroom_blinds_default_position:
+  name: Bedroom Blinds Default Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+bedroom_blinds_saved_position:
+  name: Bedroom Blinds Saved Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
 living_room_garden_blinds_morning_position:
   name: Living Room Garden Blinds Morning Position
   initial: 100
@@ -56,6 +77,27 @@ living_room_garden_blinds_default_position:
   unit_of_measurement: '%'
 living_room_garden_blinds_saved_position:
   name: Living Room Garden Blinds Saved Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+living_room_terrace_blinds_morning_position:
+  name: Living Room Terrace Blinds Morning Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+living_room_terrace_blinds_default_position:
+  name: Living Room Terrace Blinds Default Position
+  initial: 100
+  min: 0
+  max: 100
+  step: 5
+  unit_of_measurement: '%'
+living_room_terrace_blinds_saved_position:
+  name: Living Room Terrace Blinds Saved Position
   initial: 100
   min: 0
   max: 100
