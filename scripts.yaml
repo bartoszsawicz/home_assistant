@@ -44,6 +44,14 @@ set_default_blinds_position:
       data_template:
         entity_id: input_number.living_room_garden_blinds_saved_position
         value: "{{ states('input_number.living_room_garden_blinds_default_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.bedroom_blinds_saved_position
+        value: "{{ states('input_number.bedroom_blinds_default_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.living_room_terrace_blinds_saved_position
+        value: "{{ states('input_number.living_room_terrace_blinds_default_position') | int }}"
 set_morning_blinds_position:
   alias: Sets default value as saved blinds position
   sequence:
@@ -59,6 +67,14 @@ set_morning_blinds_position:
       data_template:
         entity_id: input_number.living_room_garden_blinds_saved_position
         value: "{{ states('input_number.living_room_garden_blinds_morning_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.bedroom_blinds_saved_position
+        value: "{{ states('input_number.bedroom_blinds_morning_position') | int }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.living_room_terrace_blinds_saved_position
+        value: "{{ states('input_number.living_room_terrace_blinds_morning_position') | int }}"
 open_blinds:
   alias: Open all blinds
   sequence:
