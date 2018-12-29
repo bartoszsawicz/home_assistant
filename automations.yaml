@@ -12,7 +12,7 @@
     entity_id: input_boolean.blinds_can_be_opened_users
     state: 'on'
   action:
-    - service: script.open_blinds      
+    - service: script.open_blinds
 #
 # Store current blinds position after leaving home
 #
@@ -506,4 +506,36 @@
   - service: notify.discord_alert
     data_template:
       message: '{{ trigger.to_state.attributes.friendly_name }} is opened too long'
-
+- alias: Open all blinds on cube air shake
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00029a9406
+      action_type: shake_air
+  action:
+    - service: script.open_blinds
+- alias: Adjust kitchen blinds on cube rotate
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00029a9406
+      action_type: rotate
+  action:
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.level
+        position: >
+              {% set position_adjustment = 0 %}
+              {% if trigger.event.data.action_value | int > 90 %}
+              {% set position_adjustment = 100 %}
+              {% elif trigger.event.data.action_value | int < -90 %}
+              {% set position_adjustment = -100 %}
+              {% else  %}
+              {% set position_adjustment = trigger.event.data.action_value | int %}
+              {% endif %}
+              {% set position = position_adjustment + state_attr('cover.level','current_position') | int %}
+              {% set position = [position, 0] | max %}
+              {% set position = [position, 100] | min %}
+              {{ position }}
