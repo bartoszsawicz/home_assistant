@@ -506,7 +506,7 @@
   - service: notify.discord_alert
     data_template:
       message: '{{ trigger.to_state.attributes.friendly_name }} is opened too long'
-- alias: Open all blinds on cube air shake
+- alias: Open living room garden blinds on cube air shake
   trigger:
     platform: event
     event_type: xiaomi_aqara.cube_action
@@ -514,7 +514,22 @@
       entity_id: binary_sensor.cube_158d00029a9406
       action_type: shake_air
   action:
-    - service: script.open_blinds
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
+        position: 100
+- alias: Close living room garden blinds on cube double tap
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00029a9406
+      action_type: tap_twice
+  action:
+    - service: cover.set_cover_position
+      data_template:
+        entity_id: cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
+        position: 0
 - alias: Adjust kitchen blinds on cube rotate
   trigger:
     platform: event
