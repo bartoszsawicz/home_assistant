@@ -535,7 +535,7 @@
               {% else  %}
               {% set position_adjustment = trigger.event.data.action_value | int %}
               {% endif %}
-              {% set position = position_adjustment + state_attr('cover.level','current_position') | int %}
+              {% set position = position_adjustment * -2 + state_attr('cover.level','current_position') | int %}
               {% set position = [position, 0] | max %}
               {% set position = [position, 100] | min %}
               {{ position }}
