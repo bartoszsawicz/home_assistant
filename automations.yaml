@@ -150,7 +150,7 @@
   trigger:
     platform: sun
     event: sunset
-    offset: '+00:30:00'
+    offset: '+01:30:00'
   action:
     - service: input_boolean.turn_off
       data:
@@ -505,7 +505,7 @@
   action:
   - service: notify.discord_alert
     data_template:
-      message: '{{ trigger.to_state.attributes.friendly_name }} is opened too long'
+      message: '{{ trigger.to_state.attributes.friendly_name }} is open too long'
 - alias: Open living room garden blinds on cube air shake
   trigger:
     platform: event
