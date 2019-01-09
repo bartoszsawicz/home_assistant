@@ -56,6 +56,16 @@ users:
   picture: /local/images/ha.png
   code: 004d8a4c1b264d35894be1253cc12946
   id: 004d8a4c1b264d35894be1253cc12946
+- code: 1a2333b9bc4b47009d40e42928fc0f46
+  picture: /local/images/ha.png
+  enabled: false
+  id: 1a2333b9bc4b47009d40e42928fc0f46
+  name: Mateusz
+- code: c9b87455c3c14a5e968649886441dca9
+  picture: /local/images/ha.png
+  enabled: false
+  id: c9b87455c3c14a5e968649886441dca9
+  name: Gburek
 enable_persistence: true
 code: !secret alarm_code
 passcode_attempts: '100'

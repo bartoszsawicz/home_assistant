@@ -1,0 +1,14 @@
+appdaemon:
+  threads: 10
+  log:
+    accessfile: /var/log/appdaemon/access.log
+    errorfile: /var/log/appdaemon/error.log
+    logfile: /var/log/appdaemon/appdaemon.log
+    log_size: 1000000
+    log_generations: 3
+  plugins:
+    HASS:
+      type: hass
+      ha_url: http://127.0.0.1:8080
+      token: !secret token 
+

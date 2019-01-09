@@ -1,6 +1,12 @@
-*
+/*
 !*.yaml
 !scenes
 !.gitignore
+!/appdaemon
+/appdaemon/secrets.yaml
+!/appdaemon/apps
+/appdaemon/apps/*
+!/appdaemon/apps/*.yaml
+!appdaemon/apps/*.py
 secrets.yaml
 known_devices.yaml
