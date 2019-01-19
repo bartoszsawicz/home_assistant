@@ -208,22 +208,24 @@ xiaomi_aqara:
     - key: !secret xiaomi_gateway_key
 zwave:
   usb_path: /dev/zwave
-
+media_player:
+  - platform: samsungtv
+    host: 192.168.0.120
 google_assistant:
  project_id: home-assistant-201418
  api_key: !secret google_assistant_api_key
- expose_by_default: false
- entity_config:
-   cover.level:
-     name: Kitchen blinds
-     expose: true
-     room: Kitchen
-   switch.switch_2:
-     name: Sofa lamp
-     expose: true
-     room: Living room
-     aliases:
-       - sofa light
+ expose_by_default: true
+#  entity_config:
+#    cover.level:
+#      name: Kitchen blinds
+#      expose: true
+#      room: Kitchen
+#    switch.switch_2:
+#      name: Sofa lamp
+#      expose: true
+#      room: Living room
+#      aliases:
+#        - sofa light
 #    light.gateway_light_7811dc6c9735:
 #      name: Gateway light
 #      expose: true
