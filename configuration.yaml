@@ -241,4 +241,4 @@ vacuum:
     token: !secret roborock_token
 
 shell_command:
-  restart_kids_tasmota: http://192.168.0.130/cm?cmnd=Restart%201
+  restart_kids_tasmota: 'curl http://192.168.0.130/cm?cmnd=Restart%201'
