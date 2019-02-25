@@ -2,7 +2,7 @@
 - id: restart_kids_lights_on_mqtt_disconnect
   trigger:
     platform: state
-    entity_id: light.light.sonoff_kids_ceiling_light
+    entity_id: light.sonoff_kids_ceiling_light
     to: 'unavailable'
   action:
     - service: shell_command.restart_kids_tasmota
