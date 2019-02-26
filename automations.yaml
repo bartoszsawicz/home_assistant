@@ -4,6 +4,8 @@
     platform: state
     entity_id: light.sonoff_kids_ceiling_light
     to: 'unavailable'
+    for:
+      minutes: 1
   action:
     - service: shell_command.restart_kids_tasmota
 
