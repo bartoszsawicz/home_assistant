@@ -82,14 +82,14 @@ climate:
   entities:
     - climate.living_room1
     - sensor.temperature_158d0002391b18
-    - sensor.humidity_158d0002391b18
     - sensor.temperature_158d00027724a9
-    - sensor.humidity_158d00027724a9
     - sensor.temperature_158d000237d944
-    - sensor.humidity_158d000237d944
     - sensor.temperature_158d0002389cd6
-    - sensor.humidity_158d0002389cd6
     - sensor.temperature_158d000273cfe6
+    - sensor.humidity_158d0002391b18
+    - sensor.humidity_158d00027724a9
+    - sensor.humidity_158d000237d944
+    - sensor.humidity_158d0002389cd6
     - sensor.humidity_158d000273cfe6
 
 kitchen:

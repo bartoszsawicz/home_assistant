@@ -198,8 +198,8 @@ light:
     retain: false
   - platform: mqtt
     name: "sonoff_bedroom_ceiling_light"
-    state_topic: "stat/sonoff_bedroom_light/POWER2"
-    command_topic: "cmnd/sonoff_bedroom_light/POWER2"
+    state_topic: "stat/sonoff_bedroom_light/POWER1"
+    command_topic: "cmnd/sonoff_bedroom_light/POWER1"
     availability_topic: "tele/sonoff_bedroom_light/LWT"
     qos: 1
     payload_on: "ON"
