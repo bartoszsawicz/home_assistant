@@ -67,7 +67,7 @@ lights:
     - light.sonoff_bedroom_ceiling_light
     - light.sonoff_kids_ceiling_light
     - light.yeelight_rgb_34ce008fd82f
-
+    - light.yeelight_rgb_34ce0091019b
 shutters:
   name: Shutters
   entities:
@@ -108,7 +108,6 @@ living_room:
     - sensor.humidity_158d0002391b18
     - climate.living_room1
     - switch.switch_2
-    - light.yeelight_rgb_34ce008fd82f
     - light.gateway_light_7811dc6c9735
     - vacuum.xiaomi_vacuum_cleaner
     - binary_sensor.motion_sensor_158d0001e08b44
@@ -140,6 +139,8 @@ garden:
     - switch.sprinkler_12_2
     - switch.gateway_0_7
     - switch.gateway_0_6
+    - light.yeelight_rgb_34ce008fd82f
+    - light.yeelight_rgb_34ce0091019b
 bathroom:
   name: bathroom
   entities:

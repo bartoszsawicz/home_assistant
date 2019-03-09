@@ -147,7 +147,13 @@ trigger_alarm_lights:
         entity_id: light.yeelight_rgb_34ce008fd82f  
     - service: light.toggle
       data:
+        entity_id: light.yeelight_rgb_34ce0091019b  
+    - service: light.toggle
+      data:
         entity_id: light.sonoff_kids_ceiling_light
+    - service: light.toggle
+      data:
+        entity_id: light.sonoff_bedroom_ceiling_light
     - service: switch.toggle
       data:
         entity_id: switch.gateway_0_7
@@ -158,6 +164,12 @@ trigger_alarm_lights:
 turn_on_terrace_lights:
   alias: Turn on terrace lights
   sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.yeelight_rgb_34ce008fd82f
+    - service: light.turn_on
+      data:
+        entity_id: light.yeelight_rgb_34ce0091019b
     - service: switch.turn_on
       data:
         entity_id: switch.gateway_0_7
@@ -177,6 +189,12 @@ turn_on_terrace_lights:
 turn_off_terrace_lights:
   alias: Turn off terrace lights
   sequence:
+    - service: light.turn_off
+      data:
+        entity_id: light.yeelight_rgb_34ce008fd82f
+    - service: light.turn_off
+      data:
+        entity_id: light.yeelight_rgb_34ce0091019b
     - service: switch.turn_off
       data:
         entity_id: switch.gateway_0_7
