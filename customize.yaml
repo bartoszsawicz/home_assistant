@@ -27,7 +27,7 @@ light.sonoff_bedroom_ceiling_light:
   friendly_name: Bedroom ceiling light
   icon: mdi:lightbulb
 light.yeelight_rgb_34ce008fd82f:
-  friendly_name: Garden bedroom light
+  friendly_name: Terrace light
 light.yeelight_rgb_34ce0091019b:
   friendly_name: Garden living room light
 switch.gateway_0_7:
