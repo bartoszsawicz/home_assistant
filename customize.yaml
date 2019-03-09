@@ -23,6 +23,9 @@ switch.sprinkler_1_2:
 light.sonoff_kids_ceiling_light:
   friendly_name: Kids bedroom ceiling light
   icon: mdi:lightbulb
+light.sonoff_bedroom_ceiling_light:
+  friendly_name: Bedroom ceiling light
+  icon: mdi:lightbulb
 switch.gateway_0_7:
   friendly_name: Terrace garden light
   icon: mdi:track-light
