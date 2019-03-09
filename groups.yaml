@@ -2,14 +2,22 @@ default_view:
   view: true
   name: overview
   entities:
+    - group.lights
+    - group.shutters
+    - group.climate
+    - group.windows
+    - group.useful_scripts
     - group.yr_weather
+rooms:
+  view: true
+  name: overview
+  entities:
     - group.kitchen
     - group.living_room
     - group.kids_bedroom
     - group.bedroom
     - group.bathroom
     - group.garden
-    - group.useful_scripts
 users:
   view: yes
   entities:
@@ -51,6 +59,39 @@ yr_weather:
     - sensor.yr_cloudiness
     - sensor.yr_humidity
     - sensor.yr_precipitation
+lights:
+  name: Lights
+  entities:
+    - switch.switch_2
+    - light.gateway_light_7811dc6c9735
+    - light.sonoff_bedroom_ceiling_light
+    - light.sonoff_kids_ceiling_light
+    - light.yeelight_rgb_34ce008fd82f
+
+shutters:
+  name: Shutters
+  entities:
+    - cover.level
+    - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level
+    - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_3
+    - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2
+    - cover.qubino_zmnhcdx_flush_shutter_level
+
+climate:
+  name: Climate
+    - climate.living_room1
+    - sensor.temperature_158d0002391b18
+    - sensor.humidity_158d0002391b18
+    - sensor.temperature_158d00027724a9
+    - sensor.humidity_158d00027724a9
+    - sensor.temperature_158d000237d944
+    - sensor.humidity_158d000237d944
+    - sensor.temperature_158d0002389cd6
+    - sensor.humidity_158d0002389cd6
+    - sensor.temperature_158d000273cfe6
+    - sensor.humidity_158d000273cfe6
+
+
 kitchen:
   name: Kitchen
   entities:
