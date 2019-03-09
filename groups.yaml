@@ -128,7 +128,7 @@ bedroom:
   entities:
     - cover.fibaro_system_fgrm222_roller_shutter_controller_2_level_2
     - binary_sensor.door_window_sensor_158d000204856f
-    - sonoff_bedroom_ceiling_light
+    - light.sonoff_bedroom_ceiling_light
     - sensor.temperature_158d00027724a9
     - sensor.humidity_158d00027724a9
 garden:

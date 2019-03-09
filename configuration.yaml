@@ -207,8 +207,6 @@ light:
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: false
-
-
 climate:
   - platform: eq3btsmart
     devices:
